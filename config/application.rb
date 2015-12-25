@@ -20,17 +20,17 @@ module Blog
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-
+    
+    
     #添加如下几行代码
-    config.action_mailer.default_url_options = { :host => "localhost:3000" } 
+    
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-    :address => "smtp.qq.com",  #smtp.qq.com
+    :address => "smtp.qq.com",  
     :port => 25,
-    :domain => "qq.com",   #qq.com
+    :domain => "qq.com",   
     :authentication => :login,
-    :user_name => "624459434@qq.com", #修改邮箱
-    :password => "zhoulin000~" #修改正确的密码
-  }
+    :user_name => "624459434@qq.com", 
+    :password => "zhoulin000~"   }
   end
 end
