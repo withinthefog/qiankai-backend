@@ -25,3 +25,7 @@ test:
 production:
   <<: *default
   database: qiankai
+  host: 10.10.26.58
+  port: 3306
+  username: uCrqTmyp9NfLgU3x
+  passwrod: pPz3cdHJ8VUfrgx29
