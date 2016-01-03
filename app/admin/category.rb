@@ -1,5 +1,5 @@
 ActiveAdmin.register Category do
-  permit_params :title, :text
+  permit_params :name, :display
 
   index do
     selectable_column
