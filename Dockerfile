@@ -1,12 +1,10 @@
-FROM rails
+FROM ruby
 
-RUN apt-get update && apt-get install -y nodejs && apt-get clean
-
-WORKDIR /app
+COPY Gemfile* /tmp/
+RUN cd /tmp/ && ls
+RUN cd /tmp/ && bundle install --verbose --without=development
 
 COPY ./ /app/
-
-RUN bundle install
 
 EXPOSE 8080
 
