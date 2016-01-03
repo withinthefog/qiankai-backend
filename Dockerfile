@@ -1,10 +1,12 @@
 FROM rails
 
+RUN apt-get update && apt-get install -y nodejs && apt-get clean
+
 WORKDIR /app
 
 COPY ./ /app/
 
-bundle install
+RUN bundle install
 
 EXPOSE 8080
 
