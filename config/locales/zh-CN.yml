@@ -33,6 +33,7 @@ zh-CN:
       category: "分类"
       attachment: "图片"
       product: "产品"
+      news: "今日头条"
     attributes:
       article:
         title: "标题"
@@ -56,6 +57,11 @@ zh-CN:
         image_url: "图片链接"
         description: "产品描述"
         price: "价格"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+      news:
+        title: "标题"
+        text: "内容"
         created_at: "创建时间"
         updated_at: "更新时间"
 
