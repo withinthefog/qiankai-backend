@@ -1,2 +1,2 @@
 #!/bin/bash
-cd /app/ && RAILS_ENV=production rake db:migrate db:migrate && RAILS_ENV=production rails s
+cd /app/ && RAILS_ENV=production rake db:migrate db:migrate && RAILS_ENV=production rails s -p 8080
