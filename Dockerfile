@@ -8,6 +8,7 @@ RUN cd /tmp/ && ls
 RUN cd /tmp/ && bundle install --verbose --without=development
 
 COPY ./ /app/
+RUN cd /app/ && QINIU_ACCESS_KEY='' QINIU_SECRET_KEY='' RAILS_ENV=production rake assets:precompile
 
 EXPOSE 8080
 
