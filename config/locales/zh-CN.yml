@@ -35,6 +35,7 @@ zh-CN:
       product: "产品"
       news: "今日头条"
       education: "VIP大课堂"
+      create_space: "众创空间"
     attributes:
       article:
         title: "标题"
@@ -68,6 +69,12 @@ zh-CN:
       education:
         title: "标题"
         text: "内容"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+      create_space:
+        introduction: "介绍与展示"
+        policy: "入驻与孵化"
+        support: "合作与配套"
         created_at: "创建时间"
         updated_at: "更新时间"
 
