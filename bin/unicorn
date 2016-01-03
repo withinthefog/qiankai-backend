@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+DBSTATUS="$(rake db:migrate:status | grep down | wc -l)"
+
+#if [[ "$DBSTATUS" gt 0 ]]; then
+    bundle exec unicorn -E ${RAILS_ENV:-production} -p ${PORT:-8080} -c config/unicorn.rb
+#fi
+

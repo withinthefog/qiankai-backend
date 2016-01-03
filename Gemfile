@@ -41,3 +41,7 @@ group :development do
   gem 'bundler'
   gem 'byebug'
 end
+
+group :production do
+  gem 'unicorn'
+end
