@@ -14,12 +14,12 @@
 #
 
 class Attachment < ActiveRecord::Base
-  has_attached_file :image,
-                    styles: {
-                        large: "600x800>",
-                        small: "300x400>"},
-                    processors: [:thumbnail, :compression]
-  validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
+  # has_attached_file :image,
+  #                   styles: {
+  #                       large: "600x800>",
+  #                       small: "300x400>"},
+  #                   processors: [:thumbnail, :compression]
+  # validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
   belongs_to :attachable, polymorphic: true
 
   delegate :path, :url, :content_type, to: :image

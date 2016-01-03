@@ -36,6 +36,7 @@ zh-CN:
       news: "今日头条"
       education: "VIP大课堂"
       create_space: "众创空间"
+      road_show: "路演展示"
     attributes:
       article:
         title: "标题"
@@ -75,6 +76,12 @@ zh-CN:
         introduction: "介绍与展示"
         policy: "入驻与孵化"
         support: "合作与配套"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+      road_show:
+        name: "名称"
+        description: "路演简介"
+        video_link: "视频链接"
         created_at: "创建时间"
         updated_at: "更新时间"
 
