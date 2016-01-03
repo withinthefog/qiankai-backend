@@ -27,16 +27,19 @@ zh-CN:
     update_model: "更新 %{model}"
 
     models:
-      article: "咨询"
+      article: "资讯"
       category: "标签"
       admin_user: "超级用户"
       category: "分类"
+      attachment: "图片"
+      product: "产品"
     attributes:
       article:
         title: "标题"
         text: "内容"
         created_at: "创建时间"
         updated_at: "更新时间"
+        category: "分类"
       admin_user:
         email: "邮箱"
         created_at: "创建时间"
@@ -46,6 +49,13 @@ zh-CN:
       category:
         display: "显示"
         name: "标题"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+      product:
+        name: "名称"
+        image_url: "图片链接"
+        description: "产品描述"
+        price: "价格"
         created_at: "创建时间"
         updated_at: "更新时间"
 
