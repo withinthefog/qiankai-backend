@@ -34,6 +34,7 @@ zh-CN:
       attachment: "图片"
       product: "产品"
       news: "今日头条"
+      education: "VIP大课堂"
     attributes:
       article:
         title: "标题"
@@ -60,6 +61,11 @@ zh-CN:
         created_at: "创建时间"
         updated_at: "更新时间"
       news:
+        title: "标题"
+        text: "内容"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+      education:
         title: "标题"
         text: "内容"
         created_at: "创建时间"
