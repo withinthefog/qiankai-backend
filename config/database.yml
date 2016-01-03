@@ -8,7 +8,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   username: root
-  password:
+  password: <%= ENV['MYSQL_PASSWORD'] %>
   socket: /tmp/mysql.sock
 
 development:
@@ -24,8 +24,8 @@ test:
 
 production:
   <<: *default
-  database: qiankai
-  host: 10.10.26.58
-  port: 3306
-  username: uCrqTmyp9NfLgU3x
-  passwrod: pPz3cdHJ8VUfrgx29
+  database: <%= ENV['MYSQL_INSTANCE_NAME'] %>
+  host: <%= ENV['MYSQL_PORT_3306_TCP_ADDR'] %>
+  port: <%= ENV['MYSQL_PORT_3306_TCP_PORT'] %>
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  passwrod: <%= ENV['MYSQL_PASSWORD'] %>
