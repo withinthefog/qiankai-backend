@@ -40,6 +40,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'paperclip'
+gem 'paperclip-compression'
+gem 'paperclip-qiniu'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
