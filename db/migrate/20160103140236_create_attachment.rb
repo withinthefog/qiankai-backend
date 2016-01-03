@@ -1,6 +1,6 @@
 class CreateAttachment < ActiveRecord::Migration
   def change
-    create_table :attachments do |t|
+    create_table :attachments, options: 'ROW_FORMAT=DYNAMIC' do |t|
       t.string   "attachable_type",    limit: 255
       t.integer  "attachable_id",      limit: 4
       t.string   "image_file_name",    limit: 255

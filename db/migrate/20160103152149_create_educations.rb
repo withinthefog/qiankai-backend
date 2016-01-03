@@ -1,6 +1,6 @@
 class CreateEducations < ActiveRecord::Migration
   def change
-    create_table :educations do |t|
+    create_table :educations, options: 'ROW_FORMAT=DYNAMIC' do |t|
       t.string :title
       t.text :text
       t.timestamps

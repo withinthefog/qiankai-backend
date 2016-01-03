@@ -1,6 +1,6 @@
 class CreateNews < ActiveRecord::Migration
   def change
-    create_table :news do |t|
+    create_table :news, options: 'ROW_FORMAT=DYNAMIC' do |t|
       t.string :title
       t.text :text
       t.timestamps
