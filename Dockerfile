@@ -1,7 +1,7 @@
 FROM ruby
 
 RUN apt-get update && apt-get install -y nodejs && apt-get clean
-RUN apt-get install imagemagick libmagick9-dev
+RUN apt-get install imagemagick
 
 COPY Gemfile* /tmp/
 RUN cd /tmp/ && ls
