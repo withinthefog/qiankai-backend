@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root :to => "home#index"
+  root :to => "admin/dashboard#index"
 
   namespace :api, constraints: {id: /[^\/]+/} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
