@@ -1,3 +1,2 @@
 #!/bin/bash
-brew install imagemagick
 cd /app/ && RAILS_ENV=production rake db:migrate db:migrate && RAILS_ENV=production rails s
