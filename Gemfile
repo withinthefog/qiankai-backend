@@ -1,12 +1,10 @@
 source 'http://rubygems.org'
 
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
-# Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'rails', '4.2.0'
+gem 'mysql2', '~> 0.3.18'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -26,10 +24,14 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'devise'
-gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'activeadmin', github: 'activeadmin'
+gem 'ckeditor'
+gem 'rich', github: 'kreativgebiet/rich', ref: '3e92749ac77ee171bd6f0643d67b1579cc1c1271'
+gem 'rmagick', '~> 2.15.0'
 gem 'paperclip'
 gem 'paperclip-compression'
 gem 'paperclip-qiniu'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views

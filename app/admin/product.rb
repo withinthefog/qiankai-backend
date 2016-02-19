@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-  permit_params :name, :image_url, :description, :price
+  permit_params :name, :image_url, :description, :price, :link, :hot
 
   index do
     selectable_column
@@ -7,6 +7,7 @@ ActiveAdmin.register Product do
     column :name
     column :description
     column :price
+    column :hot
     column :created_at
     actions
   end
@@ -14,6 +15,7 @@ ActiveAdmin.register Product do
   filter :description
   filter :name
   filter :price
+  filter :hot
   filter :created_at
 
   form do |f|
@@ -22,6 +24,8 @@ ActiveAdmin.register Product do
       f.input :image_url
       f.input :description
       f.input :price
+      f.input :link
+      f.input :hot
     end
     f.actions
   end

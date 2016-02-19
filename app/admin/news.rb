@@ -18,12 +18,12 @@ ActiveAdmin.register News do
   form do |f|
     f.inputs "资讯详情" do
       f.input :title
-      f.input :text
-      # f.inputs '图片' do
-      #   f.has_many :attachments, heading: false, allow_destroy: true do |a|
-      #     a.input :image, as: :file, hint: (a.template.image_tag(a.object.image.url(:small)) if a.object.image.exists? unless a.object.new_record?)
-      #   end
-      # end
+      f.input :text, as: :rich, config: { width: '76%', height: '400px' }
+      f.inputs '图片' do
+        f.has_many :attachments, heading: false, allow_destroy: true do |a|
+          a.input :image, as: :file, hint: (a.template.image_tag(a.object.image.url(:small)) if a.object.image.exists? unless a.object.new_record?)
+        end
+      end
     end
     f.actions
   end

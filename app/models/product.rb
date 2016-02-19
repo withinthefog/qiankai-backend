@@ -12,4 +12,7 @@
 #
 
 class Product < ActiveRecord::Base
+  scope :hot, -> () {
+    where(hot: true)
+  }
 end
