@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
-#  description :text
+#  description :text(65535)
 #  video_link  :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime

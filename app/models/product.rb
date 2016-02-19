@@ -9,6 +9,8 @@
 #  price       :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  link        :string(255)
+#  hot         :boolean
 #
 
 class Product < ActiveRecord::Base
