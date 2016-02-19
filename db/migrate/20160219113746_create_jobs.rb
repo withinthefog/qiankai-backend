@@ -4,6 +4,7 @@ class CreateJobs < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.string :company
+      t.timestamp
     end
   end
 end

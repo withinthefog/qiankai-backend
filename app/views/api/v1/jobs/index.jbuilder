@@ -4,4 +4,4 @@ json._links do
   end
 end
 
-json.newses @jobs
+json.jobs @jobs

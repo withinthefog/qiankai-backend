@@ -1,4 +1,4 @@
-ActiveAdmin.register News do
+ActiveAdmin.register Job do
   permit_params :title, :description, :company
 
   index do

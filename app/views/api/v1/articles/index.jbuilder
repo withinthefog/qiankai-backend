@@ -1,9 +1,6 @@
-json.articles do
-  json._links do
-    json.self do
-      json.href '/api/v1/articles'
-    end
+json._links do
+  json.self do
+    json.href '/api/v1/articles'
   end
-
-  json.articles @articles
 end
+json.articles @articles
