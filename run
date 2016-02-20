@@ -1,2 +1,2 @@
 #!/bin/bash
-cd /app/ && RAILS_ENV=production rake db:migrate db:migrate && bin/unicorn
+cd /app/ && RAILS_ENV=production rake db:migrate && bin/unicorn
