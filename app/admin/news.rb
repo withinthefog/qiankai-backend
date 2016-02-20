@@ -1,4 +1,6 @@
 ActiveAdmin.register News do
+  menu parent:'便民生活'
+
   permit_params :title, :text,
                 attachments_attributes: [:id, :image, :_destroy]
 

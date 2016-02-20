@@ -1,4 +1,6 @@
 ActiveAdmin.register Activity do
+  menu parent:'众创空间'
+
   permit_params :title, :text,
                 attachments_attributes: [:id, :image, :_destroy]
 

@@ -5,4 +5,8 @@ class Api::V1::ActivitiesController < ApiController
     @activities = @activities.to_a.reverse
   end
 
+  def show
+    @activity = Activity.find(params[:id])
+  end
+
 end

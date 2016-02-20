@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :jobs, only: [:index, :show]
       resources :activities, only: [:index, :show]
       resources :advertisements, only: [:index]
+      get  'search/:key_word', :to => 'articles#search'
     end
   end
 end

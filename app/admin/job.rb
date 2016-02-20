@@ -1,4 +1,6 @@
 ActiveAdmin.register Job do
+  menu parent:'便民生活'
+
   permit_params :title, :text, :company
 
   index do

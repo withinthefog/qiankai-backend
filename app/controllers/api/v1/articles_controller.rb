@@ -13,11 +13,18 @@ class Api::V1::ArticlesController < ApiController
 
   def show
     if params[:id] == 'about'
-      category = Category.find_by_name('关于')
+      category = Category.find_by_name('about')
       @article = Article.find_by_category_id(category.try(:id))
     else
       @article = Article.find(params[:id])
     end
+  end
+
+  def search
+    @result = Article.where("title like ?", "%#{params[:key_word]}%").to_a
+    @result += Activity.where("title like ?", "%#{params[:key_word]}%").to_a
+    @result += Job.where("title like ?", "%#{params[:key_word]}%").to_a
+    @result += News.where("title like ?", "%#{params[:key_word]}%").to_a
   end
 
 end
