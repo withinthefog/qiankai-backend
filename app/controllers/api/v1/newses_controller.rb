@@ -5,4 +5,8 @@ class Api::V1::NewsesController < ApiController
     @newses = @newses.to_a.reverse
   end
 
+  def show
+    @news = News.find(params[:id])
+  end
+
 end

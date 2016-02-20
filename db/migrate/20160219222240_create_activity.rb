@@ -2,7 +2,7 @@ class CreateActivity < ActiveRecord::Migration
   def change
     create_table :activities do |t|
       t.string :title
-      t.string :description
+      t.text :text
       t.timestamps
     end
   end

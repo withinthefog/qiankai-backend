@@ -3,7 +3,6 @@ class CreateArticles < ActiveRecord::Migration
     create_table :articles, options: 'ROW_FORMAT=DYNAMIC' do |t|
       t.string :title
       t.text :text
-
       t.timestamps
     end
   end

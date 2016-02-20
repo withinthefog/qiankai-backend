@@ -2,7 +2,7 @@ class CreateRoadShows < ActiveRecord::Migration
   def change
     create_table :road_shows, options: 'ROW_FORMAT=DYNAMIC' do |t|
       t.string :name
-      t.text :description
+      t.text :text
       t.string :video_link
       t.timestamps
     end

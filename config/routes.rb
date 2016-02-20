@@ -17,10 +17,12 @@ Rails.application.routes.draw do
 
   namespace :api, constraints: {id: /[^\/]+/} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
-      resources :articles, only: [:index]
+      resources :articles, only: [:index, :show]
       resources :products, only: [:index, :show]
       resources :newses, only: [:index, :show]
       resources :jobs, only: [:index, :show]
+      resources :activities, only: [:index, :show]
+      resources :advertisements, only: [:index]
     end
   end
 end

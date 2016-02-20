@@ -27,7 +27,7 @@ zh-CN:
     update_model: "更新 %{model}"
 
     models:
-      article: "资讯"
+      article: "文章"
       category: "标签"
       admin_user: "超级用户"
       category: "分类"
