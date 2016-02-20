@@ -1,7 +1,7 @@
 # This migration comes from rich (originally 20111002142937)
 class CreateRichRichImages < ActiveRecord::Migration
   def change
-    create_table :rich_rich_images do |t|
+    create_table :rich_rich_images, options: 'ROW_FORMAT=DYNAMIC' do |t|
 
       t.timestamps
       
