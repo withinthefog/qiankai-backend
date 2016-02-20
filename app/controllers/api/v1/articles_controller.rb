@@ -1,7 +1,7 @@
 class Api::V1::ArticlesController < ApiController
 
   def index
-    if params['category'] && Category.find_by_name(params['category'])
+    if params['category'] && category = Category.find_by_name(params['category'])
       @articles = Article.where(category: category)
     elsif !Category.find_by_name(params['category'])
       @articles = []
