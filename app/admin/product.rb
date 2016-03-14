@@ -1,5 +1,7 @@
 ActiveAdmin.register Product do
-  permit_params :name, :image_url, :description, :price, :link, :hot
+  menu parent:'商品'
+
+  permit_params :name, :image_url, :description, :price, :link, :hot, :tags
 
   index do
     selectable_column
@@ -26,6 +28,7 @@ ActiveAdmin.register Product do
       f.input :price
       f.input :link
       f.input :hot
+      f.input :tags, as: :check_boxes, collection: Tag.all
     end
     f.actions
   end

@@ -40,6 +40,7 @@ zh-CN:
       job: "就业信息"
       activity: "活动展示"
       advertisement: "首页广告"
+      tag: "商品标签"
     attributes:
       activity:
         title: "标题"
@@ -67,6 +68,11 @@ zh-CN:
         updated_at: "更新时间"
         sign_in_count: "登录次数"
         current_sign_in_at: "上次登录时间"
+      tag:
+        display: "显示"
+        name: "标题"
+        created_at: "创建时间"
+        updated_at: "更新时间"
       category:
         display: "显示"
         name: "标题"

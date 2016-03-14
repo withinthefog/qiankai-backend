@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220001920) do
+ActiveRecord::Schema.define(version: 20160314160729) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -107,6 +107,11 @@ ActiveRecord::Schema.define(version: 20160220001920) do
     t.boolean  "hot",         limit: 1
   end
 
+  create_table "products_tags", id: false, force: :cascade do |t|
+    t.integer "tag_id",     limit: 4, null: false
+    t.integer "product_id", limit: 4, null: false
+  end
+
   create_table "rich_rich_files", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -124,6 +129,13 @@ ActiveRecord::Schema.define(version: 20160220001920) do
     t.string   "name",       limit: 255
     t.text     "text",       limit: 65535
     t.string   "video_link", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "display",    limit: 255
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
