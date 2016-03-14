@@ -1,7 +1,7 @@
 class Api::V1::AdvertisementsController < ApiController
 
   def index
-    @advertisement = Advertisement.last
+    @advertisements = Advertisement.all
   end
 
 end

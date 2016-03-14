@@ -39,12 +39,16 @@ zh-CN:
       road_show: "路演展示"
       job: "就业信息"
       activity: "活动展示"
+      advertisement: "首页广告"
     attributes:
       activity:
         title: "标题"
         text: "内容"
         created_at: "创建时间"
         updated_at: "更新时间"
+      advertisement:
+        title: "标题"
+        link: "链接"
       job:
         title: "标题"
         text: "内容"

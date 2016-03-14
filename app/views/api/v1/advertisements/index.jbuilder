@@ -1,11 +1,5 @@
-json._links do
-  json.self do
-    json.href '/api/v1/advertisements'
-  end
-end
-
-json.advertisement do
-  json.title = @advertisement.title
-  json.link = @advertisement.link
-  json.image = @advertisement.attachments.first.image.url
+json.advertisements @advertisements do |advertisement|
+  json.id advertisement.id
+  json.imageUrl advertisement.attachments[0].url
+  json.link advertisement.link
 end
