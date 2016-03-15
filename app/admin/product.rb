@@ -1,7 +1,7 @@
 ActiveAdmin.register Product do
   menu parent:'商品'
 
-  permit_params :name, :image_url, :description, :price, :link, :hot, tag_ids: [], attachments_attributes: [:id, :image, :_destroy]
+  permit_params :name, :image_url, :description, :price, :link, :hot, :product_detail, :service, tag_ids: [], attachments_attributes: [:id, :image, :_destroy]
 
   index do
     selectable_column
@@ -31,6 +31,8 @@ ActiveAdmin.register Product do
           a.input :image, as: :file, hint: (a.template.image_tag(a.object.image.url(:small)) if a.object.image.exists? unless a.object.new_record?)
         end
       end
+      f.input :product_detail, as: :file
+      f.input :service, as: :file
     end
     f.actions
   end
