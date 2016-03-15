@@ -15,4 +15,6 @@ json.product do
     json.name "重庆生态农业有限公司"
     json.telephone "023-12343223"
   end
+  json.product_detail @product.product_detail.url
+  json.service @product.service.url
 end
