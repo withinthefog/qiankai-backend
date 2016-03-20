@@ -1,6 +1,7 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  devise_for :consumers
   mount Rich::Engine => '/rich', :as => 'rich'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

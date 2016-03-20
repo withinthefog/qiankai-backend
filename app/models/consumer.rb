@@ -4,9 +4,7 @@
 #
 #  id                     :integer          not null, primary key
 #  email                  :string(255)      default(""), not null
-#  phone                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
-#  authentication_token   :string(255)
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
@@ -15,23 +13,13 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
-#  created_at             :datetime
-#  updated_at             :datetime
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #
 
 class Consumer < ActiveRecord::Base
-  class Consumer < ActiveRecord::Base
-    acts_as_token_authenticatable
-    # Include default devise modules. Others available are:
-    # :confirmable, :lockable, :timeoutable and :omniauthable
-    devise :database_authenticatable, :registerable,
-           :recoverable, :rememberable, :trackable, :validatable
-
-    GENDERS= ['', '先生', '女士']
-
-    def name_with_gender
-      (self.name || '') + GENDERS[self.gender||0]
-    end
-  end
-
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 end
