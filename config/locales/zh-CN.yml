@@ -29,7 +29,7 @@ zh-CN:
     models:
       article: "文章"
       category: "标签"
-      admin_user: "超级用户"
+      admin_user: "用户"
       category: "分类"
       attachment: "图片"
       product: "产品"
@@ -68,6 +68,9 @@ zh-CN:
         updated_at: "更新时间"
         sign_in_count: "登录次数"
         current_sign_in_at: "上次登录时间"
+        role: "角色"
+        password: "密码"
+        password_confirmation: "确认密码"
       tag:
         display: "显示"
         name: "标题"
