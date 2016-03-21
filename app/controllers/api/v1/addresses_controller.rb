@@ -6,6 +6,13 @@ class Api::V1::AddressesController < ApplicationController
   end
 
   def create
-    byebug
+    @address = Address.create(receiver: address_params['receiver'], phone: address_params['phone'], address: address_params['address'], city_name: address_params['cityId'], province_id: address_params['provinceId'], consumer_id: current_consumer.id)
+
+    render :show
+  end
+
+  private
+  def address_params
+    params.permit(:receiver, :phone, :address, :cityId, :provinceId, :isDefault, :city_name, :province_name)
   end
 end
