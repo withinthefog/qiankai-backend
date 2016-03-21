@@ -1,6 +1,12 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  namespace :api do
+  namespace :v1 do
+    get 'address/index'
+    end
+  end
+
   devise_for :consumers, controllers: {registrations: "registrations", sessions: "sessions"}
   mount Rich::Engine => '/rich', :as => 'rich'
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -24,6 +30,7 @@ Rails.application.routes.draw do
       resources :jobs, only: [:index, :show]
       resources :activities, only: [:index, :show]
       resources :advertisements, only: [:index]
+      resources :addresses, only: [:index, :create]
       get  'search/:key_word', :to => 'articles#search'
     end
   end
