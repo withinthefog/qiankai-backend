@@ -1,6 +1,7 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  devise_for :customers
   namespace :api do
   namespace :v1 do
     get 'address/index'
