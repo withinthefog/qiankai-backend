@@ -45,4 +45,7 @@ class Product < ActiveRecord::Base
                     processors: [:thumbnail, :compression]
   validates_attachment :service, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
   delegate :path, :url, :content_type, to: :service
+
+  has_many :line_items
+  has_many :orders, through: :line_items
 end

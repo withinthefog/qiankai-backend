@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321092046) do
+ActiveRecord::Schema.define(version: 20160321135143) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.text     "text",       limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "receiver",      limit: 255
+    t.string   "phone",         limit: 255
+    t.integer  "city_id",       limit: 4
+    t.integer  "province_id",   limit: 4
+    t.string   "address",       limit: 255
+    t.string   "city_name",     limit: 255
+    t.string   "province_name", limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -116,11 +128,30 @@ ActiveRecord::Schema.define(version: 20160321092046) do
     t.string "company", limit: 255
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "order_id",   limit: 4
+    t.integer  "product_id", limit: 4
+    t.integer  "quantity",   limit: 4
+    t.integer  "unit_price", limit: 4
+    t.string   "state",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "news", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.text     "text",       limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "consumer_id", limit: 4
+    t.integer  "address_id",  limit: 4
+    t.string   "state",       limit: 255
+    t.integer  "total_price", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "products", force: :cascade do |t|
