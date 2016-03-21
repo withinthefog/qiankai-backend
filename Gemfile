@@ -24,7 +24,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'devise', '3.4.1'
-gem 'cancan'
+gem 'cancancan'
 gem 'simple_token_authentication'
 gem 'activeadmin', github: 'activeadmin'
 gem 'ckeditor'
