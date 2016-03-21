@@ -34,8 +34,6 @@ class DeviseCreateConsumers < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :consumers, :email,                unique: true
-    add_index :consumers, :reset_password_token, unique: true
     # add_index :consumers, :confirmation_token,   unique: true
     # add_index :consumers, :unlock_token,         unique: true
   end
