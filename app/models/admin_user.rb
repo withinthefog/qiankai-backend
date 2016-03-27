@@ -27,4 +27,6 @@ class AdminUser < ActiveRecord::Base
   def admin?
     self.role == 'admin'
   end
+
+  has_one :customer
 end
