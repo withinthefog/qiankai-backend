@@ -29,7 +29,7 @@ zh-CN:
     models:
       article: "文章"
       category: "标签"
-      admin_user: "用户"
+      admin_user: "管理员"
       category: "分类"
       attachment: "图片"
       product: "产品"
@@ -70,11 +70,17 @@ zh-CN:
         sign_in_count: "登录次数"
         current_sign_in_at: "上次登录时间"
         role: "角色"
+        name: "姓名"
         password: "密码"
         password_confirmation: "确认密码"
+      customer_admin_user_name: '就看见了'
       customer:
         name: "名称"
         description: "描述"
+        admin_user:
+          name: "姓名"
+          email: "姓名"
+        admin_user: "商户管理员"
         created_at: "创建时间"
         updated_at: "更新时间"
       tag:

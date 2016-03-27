@@ -16,6 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :string(255)
+#  customer_id            :integer
 #
 
 class AdminUser < ActiveRecord::Base
@@ -27,6 +28,4 @@ class AdminUser < ActiveRecord::Base
   def admin?
     self.role == 'admin'
   end
-
-  has_one :customer
 end
