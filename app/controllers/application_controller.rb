@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
 
   def access_denied(exception)
-    redirect_to new_admin_user_session_path, :alert => exception.message
+    redirect_to admin_products_url, :alert => exception.message
   end
 
   protected
