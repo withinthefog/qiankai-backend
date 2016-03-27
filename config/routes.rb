@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :articles, only: [:index, :show]
       resources :products, only: [:index, :show]
+      resources :customers, only: [:index, :show]
       resources :newses, only: [:index, :show]
       resources :jobs, only: [:index, :show]
       resources :activities, only: [:index, :show]
