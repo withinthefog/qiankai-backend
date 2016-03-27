@@ -21,7 +21,9 @@ ActiveAdmin.register AdminUser do
       f.input :email
       f.input :password
       f.input :password_confirmation
-      f.input :role, as: :radio, collection: ['admin', 'customer']
+      if current_admin_user.role == 'admin'
+        f.input :role, as: :radio, collection: ['admin', 'customer']
+      end
     end
     f.actions
   end
