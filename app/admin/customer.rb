@@ -21,11 +21,13 @@ ActiveAdmin.register Customer do
       f.input :name
       f.input :description
 
-      f.inputs "商户管理员", for: [:admin_user, f.object.admin_user || AdminUser.new] do |a|
-        a.input :name
-        a.input :email
-        a.input :password
-        a.input :password_confirmation
+      if current_admin_user.admin?
+        f.inputs "商户管理员", for: [:admin_user, f.object.admin_user || AdminUser.new] do |a|
+          a.input :name
+          a.input :email
+          a.input :password
+          a.input :password_confirmation
+        end
       end
 
       f.inputs '图片' do

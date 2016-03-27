@@ -17,4 +17,6 @@ class Customer < ActiveRecord::Base
 
   has_one :admin_user
   accepts_nested_attributes_for :admin_user
+
+  has_many :products
 end
