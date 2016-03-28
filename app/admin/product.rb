@@ -1,7 +1,9 @@
 ActiveAdmin.register Product do
   menu parent:'商品'
 
-  permit_params :name, :image_url, :description, :price, :link, :hot, :product_detail, :customer_id, :service, tag_ids: [], attachments_attributes: [:id, :image, :_destroy]
+  permit_params :name, :image_url, :description, :price, :link, :hot, :product_detail, :customer_id, :service, tag_ids: [],
+                product_images_attributes: [:id, :image, :_destroy], product_details_attributes: [:id, :image, :_destroy],
+                services_attributes: [:id, :image, :_destroy]
 
   index do
     selectable_column
@@ -32,12 +34,20 @@ ActiveAdmin.register Product do
         f.input :customer_id, :input_html => { value: current_admin_user.customer_id }, as: :hidden
       end
       f.inputs '图片' do
-        f.has_many :attachments, heading: false, allow_destroy: true do |a|
+        f.has_many :product_images, heading: false, allow_destroy: true do |a|
           a.input :image, as: :file, hint: (a.template.image_tag(a.object.image.url(:small)) if a.object.image.exists? unless a.object.new_record?)
         end
       end
-      f.input :product_detail, as: :file
-      f.input :service, as: :file
+      f.inputs '产品详情' do
+        f.has_many :product_details, heading: false, allow_destroy: true do |a|
+          a.input :image, as: :file, hint: (a.template.image_tag(a.object.image.url(:small)) if a.object.image.exists? unless a.object.new_record?)
+        end
+      end
+      f.inputs '售后服务' do
+        f.has_many :services, heading: false, allow_destroy: true do |a|
+          a.input :image, as: :file, hint: (a.template.image_tag(a.object.image.url(:small)) if a.object.image.exists? unless a.object.new_record?)
+        end
+      end
     end
     f.actions
   end

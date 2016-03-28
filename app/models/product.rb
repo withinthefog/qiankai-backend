@@ -27,24 +27,14 @@ class Product < ActiveRecord::Base
   }
 
   has_and_belongs_to_many :tags
-  has_many :attachments, as: :attachable
-  accepts_nested_attributes_for :attachments, allow_destroy: true
+  has_many :product_images, as: :attachable
+  accepts_nested_attributes_for :product_images, allow_destroy: true
 
-  has_attached_file :product_detail,
-                    styles: {
-                        large: "600x800>",
-                        small: "300x400>"},
-                    processors: [:thumbnail, :compression]
-  validates_attachment :product_detail, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
-  delegate :path, :url, :content_type, to: :product_detail
+  has_many :product_details, as: :attachable
+  accepts_nested_attributes_for :product_details, allow_destroy: true
 
-  has_attached_file :service,
-                    styles: {
-                        large: "600x800>",
-                        small: "300x400>"},
-                    processors: [:thumbnail, :compression]
-  validates_attachment :service, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
-  delegate :path, :url, :content_type, to: :service
+  has_many :services, as: :attachable
+  accepts_nested_attributes_for :services, allow_destroy: true
 
   has_many :line_items
   has_many :orders, through: :line_items
