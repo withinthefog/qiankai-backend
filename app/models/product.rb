@@ -19,6 +19,8 @@
 #  service_content_type        :string(255)
 #  service_file_size           :integer
 #  service_updated_at          :datetime
+#  customer_id                 :integer
+#  unit                        :string(255)
 #
 
 class Product < ActiveRecord::Base

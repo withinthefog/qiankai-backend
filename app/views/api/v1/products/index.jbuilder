@@ -10,4 +10,5 @@ json.products @products do |product|
   json.image product.product_images.size > 0 ? product.product_images[0].url : ''
   json.description product.description
   json.price product.price
+  json.unit product.unit
 end

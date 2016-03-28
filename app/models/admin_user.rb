@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #  role                   :string(255)
 #  customer_id            :integer
+#  name                   :string(255)
 #
 
 class AdminUser < ActiveRecord::Base

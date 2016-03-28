@@ -1,7 +1,7 @@
 ActiveAdmin.register Product do
   menu parent:'商品'
 
-  permit_params :name, :image_url, :description, :price, :link, :hot, :product_detail, :customer_id, :service, tag_ids: [],
+  permit_params :name, :image_url, :description, :price, :unit, :link, :hot, :product_detail, :customer_id, :service, tag_ids: [],
                 product_images_attributes: [:id, :image, :_destroy], product_details_attributes: [:id, :image, :_destroy],
                 services_attributes: [:id, :image, :_destroy]
 
@@ -11,6 +11,7 @@ ActiveAdmin.register Product do
     column :name
     column :description
     column :price
+    column :unit
     column :hot
     column :created_at
     actions
@@ -19,6 +20,7 @@ ActiveAdmin.register Product do
   filter :description
   filter :name
   filter :price
+  filter :unit
   filter :hot
   filter :created_at
 
@@ -27,6 +29,7 @@ ActiveAdmin.register Product do
       f.input :name
       f.input :description
       f.input :price
+      f.input :unit
       f.input :tags, as: :check_boxes, collection: Tag.all
       if current_admin_user.admin?
         f.input :customer, as: :select, collection: Customer.all

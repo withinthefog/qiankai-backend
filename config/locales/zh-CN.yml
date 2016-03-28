@@ -98,6 +98,7 @@ zh-CN:
         image_url: "图片链接"
         description: "产品描述"
         price: "价格"
+        unit: "单位"
         hot: "热门商品"
         link: "产品链接"
         product_detail: "产品详情"
