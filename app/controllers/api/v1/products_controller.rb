@@ -8,4 +8,9 @@ class Api::V1::ProductsController < ApiController
     @product = Product.find(params['id'].to_i)
   end
 
+  def search
+    @products = Product.where("name like ?", "%#{params[:key_word]}%")
+    render :index
+  end
+
 end
