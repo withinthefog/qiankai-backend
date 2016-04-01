@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resources :activities, only: [:index, :show]
       resources :advertisements, only: [:index]
       resources :addresses, only: [:index, :create]
+      resources :tourisms, only: [:index, :show]
       get  'search/:key_word', :to => 'articles#search'
     end
   end
