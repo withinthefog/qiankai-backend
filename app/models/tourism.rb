@@ -10,7 +10,7 @@
 #  updated_at                  :datetime
 #
 
-class Product < ActiveRecord::Base  
+class Tourism < ActiveRecord::Base
   has_and_belongs_to_many :tourism_tags
   has_many :attachments, as: :attachable
   accepts_nested_attributes_for :attachments, allow_destroy: true

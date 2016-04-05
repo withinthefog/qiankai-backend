@@ -1,4 +1,4 @@
-ActiveAdmin.register Tourism_Tag do
+ActiveAdmin.register TourismTag do
   menu parent:'旅游'
 
   permit_params :name, :display

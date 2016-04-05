@@ -1,6 +1,6 @@
 ActiveAdmin.register Tourism do
   menu parent:'旅游'
-  permit_params :title, :description :content,
+  permit_params :title, :description, :content, tourism_tag_ids: [],
                 attachments_attributes: [:id, :image, :_destroy]
 
   index do
@@ -27,7 +27,7 @@ ActiveAdmin.register Tourism do
           a.input :image, as: :file, hint: (a.template.image_tag(a.object.image.url(:small)) if a.object.image.exists? unless a.object.new_record?)
         end
       end
-      f.input :tourism_tags, as: :check_boxes, collection: Tourism_Tag.all
+      f.input :tourism_tags, as: :check_boxes, collection: TourismTag.all
     end
     f.actions
   end

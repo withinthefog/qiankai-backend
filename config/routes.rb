@@ -28,13 +28,13 @@ Rails.application.routes.draw do
       resources :articles, only: [:index, :show]
       resources :products, only: [:index, :show]
       resources :customers, only: [:index, :show]
+      resources :tourisms, only: [:index, :show]
       resources :newses, only: [:index, :show]
       resources :jobs, only: [:index, :show]
       resources :activities, only: [:index, :show]
       resources :advertisements, only: [:index]
       resources :addresses, only: [:index, :create]
-      resources :tourisms, only: [:index, :show]
-      get  'search/:key_word', :to => 'articles#search'
+      get  'search/:key_word', :to => 'products#search'
     end
   end
 end

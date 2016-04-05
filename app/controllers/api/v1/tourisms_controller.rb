@@ -1,7 +1,7 @@
 class Api::V1::TourismsController < ApiController
 
   def index
-    @tourisms = Tourism_Tag.find_by_display(params['tourism_tag']) ? Tourism_Tag.find_by_display(params['tourism_tag']).tourisms : []
+    @tourisms = TourismTag.find_by_display(params['tourism_tag']) ? TourismTag.find_by_display(params['tourism_tag']).tourisms : []
   end
 
   def show
