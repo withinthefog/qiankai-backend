@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :articles, only: [:index, :show]
       resources :products, only: [:index, :show]
       resources :customers, only: [:index, :show]
+      resources :tourisms, only: [:index, :show]
       resources :newses, only: [:index, :show]
       resources :jobs, only: [:index, :show]
       resources :activities, only: [:index, :show]
