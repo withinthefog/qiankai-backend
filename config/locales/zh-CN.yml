@@ -44,6 +44,7 @@ zh-CN:
       customer: "入驻商家"
       tourism_tag: "旅游标签"
       tourism: "旅游景点"
+      tourism_advertisement: "旅游广告"
     attributes:
       activity:
         title: "标题"
