@@ -42,6 +42,8 @@ zh-CN:
       advertisement: "首页广告"
       tag: "商品标签"
       customer: "入驻商家"
+      tourism_tag: "旅游标签"
+      tourism: "旅游景点"
     attributes:
       activity:
         title: "标题"
@@ -88,9 +90,20 @@ zh-CN:
         name: "标题"
         created_at: "创建时间"
         updated_at: "更新时间"
+      tourism_tag:
+        display: "显示"
+        name: "标题"
+        created_at: "创建时间"
+        updated_at: "更新时间"
       category:
         display: "显示"
         name: "标题"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+      tourism:
+        title: "标题"
+        description: "简介"
+        content: "内容"
         created_at: "创建时间"
         updated_at: "更新时间"
       product:
