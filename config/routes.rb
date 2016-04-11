@@ -34,7 +34,8 @@ Rails.application.routes.draw do
       resources :activities, only: [:index, :show]
       resources :advertisements, only: [:index]
       resources :addresses, only: [:index, :create]
-      get  'search/:key_word', :to => 'products#search'
+      get  'search/:key_word', to: 'products#search'
+      post 'oauth_sign_in', to: 'wechats#sign_in'
     end
   end
 end
