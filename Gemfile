@@ -34,6 +34,7 @@ gem 'paperclip'
 gem 'paperclip-compression'
 gem 'paperclip-qiniu'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'httparty'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
