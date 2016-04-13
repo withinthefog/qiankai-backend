@@ -30,6 +30,7 @@ ActiveAdmin.register Product do
       f.input :description
       f.input :price
       f.input :unit
+      f.input :hot
       f.input :tags, as: :check_boxes, collection: Tag.all
       if current_admin_user.admin?
         f.input :customer, as: :select, collection: Customer.all
