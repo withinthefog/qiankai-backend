@@ -6,7 +6,8 @@ json.product do
   json.description @product.description
   json.price @product.price
   json.unit @product.unit
-  json.soldAmount 121
+  json.stock_number @product.stock_number
+  json.sold_amount 121
   json.comments ["好产品", "经久耐用"]
   json.service_description "由\"#{@product.customer ? @product.customer.name : '开县春秋农业开发有限公司'}\"直接销售和发货，并提供售后服务"
   json.score 4.74
