@@ -2,12 +2,12 @@
 #
 # Table name: tourisms
 #
-#  id                          :integer          not null, primary key
-#  title                       :string(255)      景点名称
-#  description                 :string(255)      景点描述
-#  content                     :text             景点正文
-#  created_at                  :datetime
-#  updated_at                  :datetime
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  description :text(65535)
+#  content     :text(65535)
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 class Tourism < ActiveRecord::Base

@@ -21,6 +21,7 @@
 #  service_updated_at          :datetime
 #  customer_id                 :integer
 #  unit                        :string(255)
+#  stock_number                :integer
 #
 
 class Product < ActiveRecord::Base
