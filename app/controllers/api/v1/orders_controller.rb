@@ -8,9 +8,10 @@ class Api::V1::OrdersController < ApiController
   def create
     total_price = 0
 
-    line_items = order_params[:order][:products].map do |product_id, quantity|
-      product = Product.find(product_id.to_i)
-      total_price += product.price.to_f
+    line_items = order_params[:products].map do |item|
+      quantity = item[:quantity]
+      product = Product.find(item[:id].to_i)
+      total_price += product.price.to_f * quantity
       LineItem.create(product_id: product.id, quantity: quantity, unit_price: product.price.to_f)
     end
 
@@ -20,7 +21,7 @@ class Api::V1::OrdersController < ApiController
 
   private
   def order_params
-    params.require(:order).permit(:address_id, products:[:id, :quantity])
+    params.require(:order).permit(:address_id, :ship_fee, products:[:id, :quantity])
   end
 
 end
