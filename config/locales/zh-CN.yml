@@ -44,7 +44,13 @@ zh-CN:
       customer: "入驻商家"
       tourism_tag: "旅游标签"
       tourism: "旅游景点"
+      consumer: "用户"
     attributes:
+      consumer:
+        email: "邮箱"
+        user_name: "用户名"
+        phone: "手机号"
+        created_at: "注册时间"
       activity:
         title: "标题"
         text: "内容"
