@@ -7,12 +7,11 @@ class SessionsController < Devise::SessionsController
   def create
 
     self.resource = warden.authenticate(auth_options)
-
     unless (resource)
       return respond_to do |format|
         format.json {
           render :json => {
-                     :message => 'Please input valid email or password',
+                     :message => '请输入正确的用户名或密码',
                      :status => 401
                  }
         }
