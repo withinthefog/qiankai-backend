@@ -143,7 +143,16 @@ zh-CN:
         video_link: "视频链接"
         created_at: "创建时间"
         updated_at: "更新时间"
-
+    errors:
+      messages:
+        record_invalid: "不合法的记录"
+      models:
+        consumer:
+          attributes:
+            email:
+              taken: "该邮箱已注册"
+            password:
+              too_short: "为了安全，请输入足够长的密码"
   views:
     pagination:
       first: "&laquo; 首页"

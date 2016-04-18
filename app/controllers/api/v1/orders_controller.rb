@@ -20,8 +20,9 @@ class Api::V1::OrdersController < ApiController
                          total_price: total_price,
                          state: '未支付',
                          ship_fee: order_params[:ship_fee],
-                         sn: "#{DateTime.now.to_i}-#{rand(9999)}")
+                         sn: "#{DateTime.now.to_i}#{rand(9999)}")
     @order.line_items << line_items
+
     render :show
   end
 

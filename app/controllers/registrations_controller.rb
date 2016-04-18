@@ -2,14 +2,13 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     @consumer = Consumer.new(consumer_params)
-    begin
-      @consumer.save
+    if(@consumer.save)
       render :json => {
                  :consumer => @consumer,
                  :status => :ok
              }
-    rescue
-      render :json => {:state => :failed, :messages => 'Sign up failed'}
+    else
+      render :json => {:state => :failed, :messages => @consumer.errors.messages.map{|key, value| value[0]}.join('\n')}
     end
   end
 
