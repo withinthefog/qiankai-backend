@@ -13,7 +13,7 @@ class Api::V1::ArticlesController < ApiController
 
   def show
     if params[:id] == 'about'
-      category = Category.find_by_name('about')
+      category = Category.find_by_display('about')
       @article = Article.find_by_category_id(category.try(:id))
     else
       @article = Article.find(params[:id])
