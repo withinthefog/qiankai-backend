@@ -16,6 +16,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  authentication_token   :string(255)
+#  user_name              :string(255)
+#  phone                  :string(255)
 #
 
 class Consumer < ActiveRecord::Base

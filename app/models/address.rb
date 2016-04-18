@@ -17,4 +17,5 @@
 
 class Address < ActiveRecord::Base
   belongs_to :consumer
+  has_many :orders
 end
