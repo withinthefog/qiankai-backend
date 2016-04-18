@@ -15,6 +15,6 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def consumer_params
-    params.require(:consumer).permit(:email, :password, :password_confirmation)
+    params.require(:consumer).permit(:user_name, :phone, :email, :password, :password_confirmation)
   end
 end
