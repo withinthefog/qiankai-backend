@@ -1,4 +1,5 @@
 class SessionsController < Devise::SessionsController
+  respond_to :json
   # https://github.com/plataformatec/devise/blob/master/app/controllers/devise/sessions_controller.rb
   # POST /resource/sign_in
   # Resets the authentication token each time! Won't allow you to login on two devices
@@ -8,28 +9,19 @@ class SessionsController < Devise::SessionsController
 
     self.resource = warden.authenticate(auth_options)
     unless (resource)
-      return respond_to do |format|
-        format.json {
-          render :json => {
+          return render :json => {
                      :message => '请输入正确的用户名或密码',
                      :status => 401
                  }
-        }
       end
-    end
-
     sign_in(resource_name, resource)
 
     current_consumer.update authentication_token: nil
 
-    respond_to do |format|
-      format.json {
         render :json => {
                    :consumer => current_consumer,
                    :status => :ok
                }
-      }
-    end
   end
 
   # DELETE /resource/sign_out
