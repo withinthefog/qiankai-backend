@@ -22,7 +22,7 @@ ActiveAdmin.register Order do
   end
 
   form do |f|
-    f.inputs "资讯详情" do
+    f.inputs "订单详情" do
       f.input :state
       f.input :total_price
       f.input :ship_fee
