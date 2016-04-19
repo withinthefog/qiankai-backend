@@ -2,7 +2,7 @@ class Api::V1::OrdersController < ApiController
   before_action :authenticate_consumer!
 
   def index
-    @orders = Order.find_by_consumer_id(current_consumer.id)
+    @orders = Order.includes(:line_items).includes(:products).where(consumer_id: current_consumer.id)
   end
 
   def create
