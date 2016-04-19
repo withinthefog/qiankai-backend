@@ -21,6 +21,15 @@ ActiveAdmin.register Order do
     actions
   end
 
+  form do |f|
+    f.inputs "资讯详情" do
+      f.input :state
+      f.input :total_price
+      f.input :ship_fee
+    end
+    f.actions
+  end
+
   filter :created_at
   filter :state
 end
