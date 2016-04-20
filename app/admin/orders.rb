@@ -7,7 +7,7 @@ ActiveAdmin.register Order do
     column :id
     column :sn
     column :line_items do |order|
-      order.line_items.map{|line_item| "商品ID: #{line_item.product.name}, 数量: #{line_item.quantity}"}.reduce('+')
+      order.line_items.map{|line_item| "商品ID: #{line_item.try(:product).try(:name)}, 数量: #{line_item.quantity}"}.reduce('+')
     end
     column :consumer do |order|
       order.consumer.email if order.consumer.present?
@@ -16,6 +16,7 @@ ActiveAdmin.register Order do
       link_to order.address.city_name, admin_address_path(order.address) if order.address.present?
     end
     column :state
+    column :handle_state
     column :total_price
     column :ship_fee
     column :created_at
