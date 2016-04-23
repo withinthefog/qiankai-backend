@@ -1,19 +1,21 @@
 class Api::V1::WechatsController < ApplicationController
   def sign_in
-    byebug
-
     code = params[:code]
 
-    access_token_string = WeChatService.get_access_token(code).parsed_response
-    access_token_json = JSON.parse(access_token_string)
-
-    user_info_string = WeChatService.get_user_info(access_token_json['access_token'], access_token_json['openid']).parsed_response
-    user_info_json = JSON.parse(user_info_string).except('privilege', 'language', 'country')
-
-    @consumer = create_and_sign_consumer(user_info_json.merge(
-                                             provider: 'wechat',
-                                             password: 'zhiyecaoshou',
-                                             refresh_token: access_token_json['refresh_token']))
+    # access_token_string = WeChatService.get_access_token(code).parsed_response
+    # access_token_json = JSON.parse(access_token_string)
+    #
+    # user_info_string = WeChatService.get_user_info(access_token_json['access_token'], access_token_json['openid']).parsed_response
+    # user_info_json = JSON.parse(user_info_string).except('privilege', 'language', 'country')
+    #
+    # @consumer = create_and_sign_consumer(user_info_json.merge(
+    #                                          provider: 'wechat',
+    #                                          password: 'test_for_demo',
+    #                                          refresh_token: access_token_json['refresh_token']))
+    #
+    @consumer = Consumer.find_or_create_by(email: code+'@wechat.com') do |consumer|
+      consumer.password = 'test_for_demo'
+    end
 
     render :json => {
                :consumer => @consumer,

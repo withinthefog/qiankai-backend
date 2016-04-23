@@ -1,11 +1,10 @@
 class WeChatService
   include HTTParty
 
-  @app_id = 'wxabc772dc59caa03c'
-  @app_secret = '5d4a5e1f33d92c04c4932baf70339863'
+  @app_id = ENV['WE_CHAT_APP_ID'] || 'wxabc772dc59caa03c'
+  @app_secret = ENV['WE_CHAT_APP_SECRET'] || '5d4a5e1f33d92c04c4932baf70339863'
   @sns_scope = 'snsapi_userinfo'
   @state = 'WECHAT'
-  @call_back_url = 'http%3A%2F%2Flibo.ofs-weixin.com%3A9092%2Fwe_chat_call_back%2Fnew'
 
   def self.we_chat_oauth
     self.get(code_url)
@@ -35,10 +34,6 @@ class WeChatService
   end
 
   private
-  def self.code_url
-    "https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{@app_id}&redirect_uri=#{@call_back_url}&response_type=code&scope=#{@sns_scope}&state=#{@state}#wechat_redirect"
-  end
-
   def self.access_token_url_for(code)
     "https://api.weixin.qq.com/sns/oauth2/access_token?appid=#{@app_id}&secret=#{@app_secret}&code=#{code}&grant_type=authorization_code"
   end
