@@ -1,6 +1,10 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  get 'transaction/new'
+
+  get 'transaction/create'
+
   devise_for :customers
   namespace :api do
   namespace :v1 do
@@ -35,6 +39,7 @@ Rails.application.routes.draw do
       resources :advertisements, only: [:index]
       resources :addresses, only: [:index, :create]
       resources :orders
+      resources :transactions
       get  'search/:key_word', to: 'products#search'
       post 'oauth_sign_in', to: 'wechats#sign_in'
     end

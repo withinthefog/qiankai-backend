@@ -13,7 +13,7 @@
 #  sn                :string(255)
 #  logistical        :string(255)
 #  logistical_number :string(255)
-#  handle_state      :string(255)
+#  handle_state      :string(255)      default("未处理"), not null
 #
 
 class Order < ActiveRecord::Base

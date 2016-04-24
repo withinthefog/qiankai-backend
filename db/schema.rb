@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423111951) do
+ActiveRecord::Schema.define(version: 20160424144117) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -247,6 +247,16 @@ ActiveRecord::Schema.define(version: 20160423111951) do
     t.text     "content",     limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "order_id",         limit: 4
+    t.string   "pingpp_id",        limit: 255
+    t.string   "status",           limit: 255
+    t.string   "transaction_type", limit: 255
+    t.float    "amount",           limit: 24
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,4 +1,4 @@
-class Api::V1::WechatsController < ApplicationController
+class Api::V1::WechatsController < ApiController
   def sign_in
     code = params[:code]
 

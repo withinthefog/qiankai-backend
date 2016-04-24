@@ -18,6 +18,14 @@
 #  authentication_token   :string(255)
 #  user_name              :string(255)
 #  phone                  :string(255)
+#  provider               :string(255)
+#  openid                 :string(255)
+#  nickname               :string(255)
+#  sex                    :integer
+#  city                   :string(255)
+#  province               :string(255)
+#  headimgurl             :string(255)
+#  refresh_token          :string(255)
 #
 
 class Consumer < ActiveRecord::Base
