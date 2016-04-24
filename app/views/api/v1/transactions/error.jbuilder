@@ -1,3 +1,3 @@
 json.transaction do
-  json.message @error
+  json.error @error
 end

@@ -5,14 +5,19 @@ class Api::V1::WechatsController < ApiController
     access_token_string = WeChatService.get_access_token(code).parsed_response
     access_token_json = JSON.parse(access_token_string)
 
+    return render json: {
+                      error: '错误的微信授权code',
+                      status: 422
+                  } if access_token_json['errcode']
+
     user_info_string = WeChatService.get_user_info(access_token_json['access_token'], access_token_json['openid']).parsed_response
     user_info_json = JSON.parse(user_info_string).except('privilege', 'language', 'country')
 
     @consumer = create_and_sign_consumer(user_info_json.merge(email: "#{code}@wechat.com", password: "#{code}", refresh_token: access_token_json['refresh_token']))
 
-    render :json => {
-               :consumer => @consumer,
-               :status => :ok
+    render json: {
+               consumer: @consumer,
+               status: :ok
            }
   end
 
