@@ -14,7 +14,7 @@ class Api::V1::TransactionsController < ApiController
 
   def create
     puts params
-    Transaction.create(pingpp_id: params[:id],
+    Transaction.create!(pingpp_id: params['id'],
                        order_id: params['data']['object']['order_no'],
                        status: params['data']['object']['paid'],
                        transaction_type: params['type'],
