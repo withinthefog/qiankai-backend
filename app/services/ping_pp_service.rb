@@ -9,7 +9,7 @@ class PingPPService
         currency: 'cny',
         client_ip: client_ip,
         extra: {open_id: order.consumer.openid},
-        app: {id: "app_0qbv1GTurPWP9Gq1"}
+        app: {id: ENV['PING_PP_KEY'] || "app_0qbv1GTurPWP9Gq1"}
     )
   end
 end
