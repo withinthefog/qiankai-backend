@@ -15,12 +15,12 @@ class Api::V1::TransactionsController < ApiController
   def create
     puts params
     Transaction.create!(pingpp_id: params['id'],
-                       order_id: params['data']['object']['order_no'],
+                        order_sn: params['data']['object']['order_no'],
                        status: params['data']['object']['paid'],
                        transaction_type: params['type'],
                        amount: params['data']['object']['amount'])
 
-    Order.find_by_sn(params['data']['object']['order_no']).update_attribute(state: '已支付')
+    Order.find_by_sn(params['data']['object']['order_no']).update_attributes(state: '已支付')
     return render json: {status: 200}
 
   rescue Exception
