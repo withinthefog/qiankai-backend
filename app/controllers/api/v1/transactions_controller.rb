@@ -7,13 +7,17 @@ class Api::V1::TransactionsController < ApiController
       return render :error
     end
 
+    if params[:channel].nil?
+      @error = 'Channel not provided'
+      return render :error
+    end
+
     order = Order.find_by_sn(params[:sn])
     ip = request.remote_ip
-    @charge = PingPPService.create_payment(order, ip)
+    @charge = PingPPService.create_payment(order, ip, params[:channel])
   end
 
   def create
-    puts params
     Transaction.create!(pingpp_id: params['id'],
                         order_sn: params['data']['object']['order_no'],
                        status: params['data']['object']['paid'],
