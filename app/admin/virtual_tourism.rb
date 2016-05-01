@@ -19,7 +19,7 @@ ActiveAdmin.register VirtualTourism do
     f.inputs '虚拟旅游详情' do
       f.input :title
       f.input :description
-      f.input :video, as: :file
+      f.input :video, as: :file, hint: (f.image_tag(f.object.video_thumb) if f.object.video.exists? unless f.object.new_record?)
     end
     f.actions
   end
