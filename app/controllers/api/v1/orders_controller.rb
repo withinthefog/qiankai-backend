@@ -1,8 +1,20 @@
 class Api::V1::OrdersController < ApiController
+  before_action :authenticate_consumer_from_token!
   before_action :authenticate_consumer!
 
   def index
+    if(params[:sn].present?)
+      @order = Order.find_by_sn(params[:sn])
+      raise ActiveRecord::RecordNotFound, "Can not find order with sn #{params[:sn]}" unless @order
+      raise UnauthorizedException unless @order.try(:consumer_id) == current_consumer.id
+      return render :show
+    end
+
     @orders = Order.includes(:line_items).includes(:products).where(consumer_id: current_consumer.id).order('created_at DESC')
+  end
+
+  def show
+    @order = Order.find(params[:id].to_i)
   end
 
   def create

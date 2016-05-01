@@ -1,4 +1,5 @@
 class Api::V1::AddressesController < ApiController
+  before_action :authenticate_consumer_from_token!
   before_action :authenticate_consumer!
 
   def index

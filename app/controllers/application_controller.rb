@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_consumer_from_token!
   # Prevent CSRF attacks by raising an exception.
   protect_from_forgery with: :null_session, :if => Proc.new { |c| c.request.format == 'application/json' }
 
@@ -22,6 +21,8 @@ class ApplicationController < ActionController::Base
 
     if consumer
       sign_in consumer, store: false
+    else
+      return render json: {error: '无权限访问'}.to_json, status: 401
     end
   end
 

@@ -1,6 +1,7 @@
 json.order do
   json.sn @order.sn
   json.state @order.state
+  json.handle_state @order.handle_state
   json.total_price @order.total_price
   json.ship_fee @order.ship_fee
   json.created_at @order.created_at.strftime('%Y-%m-%d')
