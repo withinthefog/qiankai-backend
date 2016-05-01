@@ -11,6 +11,18 @@ ActiveAdmin.register VirtualTourism do
     actions
   end
 
+  show do
+    attributes_table do
+      row :title
+      row :description
+      row :video do |video|
+        image_tag video.video_thumb
+      end
+      row :created_at
+      row :updated_at
+    end
+  end
+
   filter :title
   filter :description
   filter :created_at

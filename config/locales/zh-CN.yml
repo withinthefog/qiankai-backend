@@ -44,10 +44,17 @@ zh-CN:
       customer: "入驻商家"
       tourism_tag: "旅游标签"
       tourism: "旅游景点"
+      virtual_tourism: "虚拟旅游"
       consumer: "用户"
       order: "订单"
       address: "配送地址"
     attributes:
+      virtual_tourism:
+        title: "标题"
+        description: "描述"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+        video: "视频"
       address:
         receiver: "收件人"
         phone: "电话"

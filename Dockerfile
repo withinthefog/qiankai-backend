@@ -1,7 +1,7 @@
 FROM ruby
 
 RUN apt-get update && apt-get install -y nodejs && apt-get clean
-RUN apt-get upgrade
+RUN apt-get -y upgrade
 RUN apt-get install imagemagick
 RUN apt-get install ffmpeg
 
