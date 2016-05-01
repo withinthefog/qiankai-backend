@@ -14,8 +14,16 @@
 #
 
 class VirtualTourism < ActiveRecord::Base
-  has_attached_file :video
+  has_attached_file :video,
+                    styles: {
+                        thumb: { geometry: "160x120#", format: 'jpg', time: 10 }
+                    },
+                    processors: [:transcoder]
 
   validates_attachment_content_type :video, content_type: /\Avideo\/.*\Z/
   validates_presence_of :video
+
+  def video_thumb
+    self.video.url.gsub(/\/original\//, '/thumb/').gsub(/(\.[a-z|A-Z]*$)/, '.jpg')
+  end
 end
