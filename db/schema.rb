@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425021106) do
+ActiveRecord::Schema.define(version: 20160501024704) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -277,5 +277,16 @@ ActiveRecord::Schema.define(version: 20160425021106) do
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree
+
+  create_table "virtual_tourisms", force: :cascade do |t|
+    t.string   "title",              limit: 255
+    t.string   "description",        limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "video_file_name",    limit: 255
+    t.string   "video_content_type", limit: 255
+    t.integer  "video_file_size",    limit: 4
+    t.datetime "video_updated_at"
+  end
 
 end
