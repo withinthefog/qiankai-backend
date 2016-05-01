@@ -1,6 +1,10 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  get 'virtual_tourism/index'
+
+  get 'virtual_tourism/show'
+
   get 'transaction/new'
 
   get 'transaction/create'
@@ -37,6 +41,7 @@ Rails.application.routes.draw do
       resources :jobs, only: [:index, :show]
       resources :activities, only: [:index, :show]
       resources :advertisements, only: [:index]
+      resources :virtual_tourisms, only: [:index, :show]
       resources :addresses, only: [:index, :create]
       resources :orders
       resources :transactions

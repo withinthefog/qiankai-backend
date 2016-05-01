@@ -24,6 +24,6 @@ class VirtualTourism < ActiveRecord::Base
   validates_presence_of :video
 
   def video_thumb
-    self.video.url.gsub(/\/original\//, '/thumb/').gsub(/(\.[a-z|A-Z]*$)/, '.jpg')
+    self.video.try(:url).try(:gsub, /\/original\//, '/thumb/').try(:gsub, /(\.[a-z|A-Z]*$)/, '.jpg')
   end
 end
