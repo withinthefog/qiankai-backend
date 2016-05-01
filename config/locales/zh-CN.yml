@@ -55,6 +55,8 @@ zh-CN:
         created_at: "创建时间"
         updated_at: "更新时间"
         video: "视频"
+        video_url: "视频链接"
+        thumb_nail: "视频缩略图"
       address:
         receiver: "收件人"
         phone: "电话"
