@@ -1,8 +1,9 @@
 FROM ruby
 
 RUN apt-get update && apt-get install -y nodejs && apt-get clean
+RUN apt-get upgrade
 RUN apt-get install imagemagick
-RUN apt-get install avconv
+RUN apt-get install ffmpeg
 
 COPY Gemfile* /tmp/
 RUN cd /tmp/ && ls
