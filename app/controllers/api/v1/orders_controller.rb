@@ -10,7 +10,7 @@ class Api::V1::OrdersController < ApiController
       return render :show
     end
 
-    @orders = Order.includes(:line_items).includes(:products).where(consumer_id: current_consumer.id).order('created_at DESC')
+    @orders = Order.includes(:address).includes(:line_items).includes(:products).where(consumer_id: current_consumer.id).order('created_at DESC')
   end
 
   def show

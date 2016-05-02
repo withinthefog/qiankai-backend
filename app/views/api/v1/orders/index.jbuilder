@@ -4,6 +4,12 @@ json.orders @orders do |order|
   json.handle_state order.handle_state
   json.total_price order.total_price
   json.ship_fee order.ship_fee
+  json.address do
+    json.receiver order.address.try(:receiver)
+    json.phone order.address.try(:phone)
+    json.detail order.address.(:address)
+    json.city order.address.(:city_name)
+  end
   json.created_at order.created_at.strftime('%Y-%m-%d')
 
   json.line_items order.line_items do |line_item|
