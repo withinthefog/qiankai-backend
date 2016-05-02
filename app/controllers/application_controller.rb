@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
   def authenticate_consumer_from_token!
     token = params[:token].presence
     consumer = token && Consumer.find_by_authentication_token(token.to_s)
-
     if consumer
       sign_in consumer, store: false
     else

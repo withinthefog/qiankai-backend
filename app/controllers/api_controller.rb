@@ -29,7 +29,6 @@ class ApiController < ApplicationController
   end
 
   def handle_unprocessable_exception(exception)
-    byebug
     logger.info("Unprocessable request: #{exception.message}")
     render json: {message: exception.message, code: exception.code}.to_json, status: 422
   end

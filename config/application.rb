@@ -22,6 +22,7 @@ module Qiankai
     config.i18n.enforce_available_locales = false
     config.i18n.locale = 'zh-CN'
     config.i18n.default_locale = 'zh-CN'
+    config.middleware.insert_before ActionDispatch::ParamsParser, "JSONParseError"
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
