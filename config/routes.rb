@@ -1,20 +1,7 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
-  get 'virtual_tourism/index'
-
-  get 'virtual_tourism/show'
-
-  get 'transaction/new'
-
-  get 'transaction/create'
-
   devise_for :customers
-  namespace :api do
-  namespace :v1 do
-    get 'address/index'
-    end
-  end
 
   devise_for :consumers, controllers: {registrations: "registrations", sessions: "sessions"}
   mount Rich::Engine => '/rich', :as => 'rich'
@@ -44,6 +31,7 @@ Rails.application.routes.draw do
       resources :virtual_tourisms, only: [:index, :show]
       resources :addresses, only: [:index, :create]
       resources :orders
+      resource :consumer, only: [:show, :update]
       resources :transactions
       get  'search/:key_word', to: 'products#search'
       post 'oauth_sign_in', to: 'wechats#sign_in'
