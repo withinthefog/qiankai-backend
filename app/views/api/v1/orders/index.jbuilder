@@ -7,8 +7,8 @@ json.orders @orders do |order|
   json.address do
     json.receiver order.address.try(:receiver)
     json.phone order.address.try(:phone)
-    json.detail order.address.(:address)
-    json.city order.address.(:city_name)
+    json.detail order.address.try(:address)
+    json.city order.address.try(:city_name)
   end
   json.created_at order.created_at.strftime('%Y-%m-%d')
 
