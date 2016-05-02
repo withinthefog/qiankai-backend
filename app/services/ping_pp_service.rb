@@ -3,7 +3,7 @@ class PingPPService
     Pingpp::Charge.create(
         order_no: order.sn,
         amount: (order.total_price + order.ship_fee) * 100,
-        subject: order.consumer.openid || order.sn,
+        subject: '开街网订单' + (order.consumer.openid || order.sn),
         body: (order.line_items.map { |line_item| line_item.product.name }).to_json,
         channel: channel,
         currency: 'cny',
