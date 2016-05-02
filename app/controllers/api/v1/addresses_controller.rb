@@ -7,13 +7,15 @@ class Api::V1::AddressesController < ApiController
   end
 
   def create
-    @address = Address.create(receiver: address_params['receiver'], phone: address_params['phone'], address: address_params['address'], city_name: address_params['cityId'], province_id: address_params['provinceId'], consumer_id: current_consumer.id)
+    @address = Address.create(receiver: address_params['receiver'], phone: address_params['phone'],
+                              address: address_params['address'], city_name: address_params['cityName'],
+                              province_name: address_params['provinceName'], consumer_id: current_consumer.id)
 
     render :show
   end
 
   private
   def address_params
-    params.permit(:receiver, :phone, :address, :cityId, :provinceId, :isDefault, :city_name, :province_name)
+    params.require(:address).permit(:receiver, :phone, :address, :isDefault, :cityName, :provinceName)
   end
 end
