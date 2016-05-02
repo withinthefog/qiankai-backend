@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       resources :activities, only: [:index, :show]
       resources :advertisements, only: [:index]
       resources :virtual_tourisms, only: [:index, :show]
-      resources :addresses, only: [:index, :create]
+      resources :addresses, only: [:index, :create, :destroy]
       resources :orders
       resource :consumer, only: [:show, :update]
       resources :transactions

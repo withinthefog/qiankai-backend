@@ -3,7 +3,7 @@ class Api::V1::AddressesController < ApiController
   before_action :authenticate_consumer!
 
   def index
-    @addresses = current_consumer.addresses
+    @addresses = current_consumer.addresses.where(deleted: false)
   end
 
   def create
@@ -15,6 +15,13 @@ class Api::V1::AddressesController < ApiController
                               is_default: address_params['isDefault'])
 
     render :show
+  end
+
+  def destroy
+    @address_id = params[:id]
+    address = Address.find(params[:id])
+    raise UnauthorizedException unless address.try(:consumer_id) == current_consumer.id
+    address.update(deleted: true)
   end
 
   private

@@ -1,0 +1,1 @@
+json.message "The address #{@address_id} has been deleted"
