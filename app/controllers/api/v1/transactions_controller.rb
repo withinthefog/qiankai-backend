@@ -15,7 +15,7 @@ class Api::V1::TransactionsController < ApiController
 
     order = Order.find_by_sn(params[:sn])
     ip = request.remote_ip
-    @charge = PingPPService.create_payment(order, ip, params[:channel])
+    @charge = PingPPService.create_payment(order, ip, params[:channel], params[:success_url])
   end
 
   def create
