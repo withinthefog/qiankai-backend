@@ -1,6 +1,6 @@
 class Api::V1::TransactionsController < ApiController
-  before_action :authenticate_consumer_from_token!
-  before_action :authenticate_consumer!
+  before_action :authenticate_consumer_from_token!, only: [:new]
+  before_action :authenticate_consumer!, only: [:new]
 
   def new
     if params[:sn].nil? || (order = Order.find_by_sn(params[:sn])).try(:consumer) != current_consumer || order.state == '已支付'
