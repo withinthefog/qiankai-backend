@@ -149,9 +149,9 @@ ActiveRecord::Schema.define(version: 20160509125825) do
     t.integer  "quantity",     limit: 4
     t.float    "unit_price",   limit: 24
     t.string   "state",        limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "handle_state", limit: 255
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.string   "handle_state", limit: 255, default: "未处理", null: false
   end
 
   create_table "news", force: :cascade do |t|
