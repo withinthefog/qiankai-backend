@@ -9,7 +9,7 @@
 #  total_price       :float(24)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  ship_fee          :integer
+#  ship_fee          :float(24)
 #  sn                :string(255)
 #  logistical        :string(255)
 #  logistical_number :string(255)
