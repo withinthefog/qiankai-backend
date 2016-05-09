@@ -6,7 +6,7 @@
 #  consumer_id       :integer
 #  address_id        :integer
 #  state             :string(255)
-#  total_price       :integer
+#  total_price       :float(24)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  ship_fee          :integer
