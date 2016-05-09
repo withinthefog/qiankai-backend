@@ -47,6 +47,7 @@ zh-CN:
       virtual_tourism: "虚拟旅游"
       consumer: "用户"
       order: "订单"
+      line_item: "订单项"
       address: "配送地址"
     attributes:
       virtual_tourism:
@@ -75,6 +76,16 @@ zh-CN:
         line_items: "购买详情"
         logistical: "物流公司"
         logistical_number: "物流编号"
+      line_item:
+        sn: "订单号"
+        product: "产品"
+        consumer: "用户"
+        address: "配送地址"
+        state: "支付状态"
+        handle_state: "处理状态"
+        unit_price: "单价"
+        quantity: "数量"
+        created_at: "创建时间"
       consumer:
         email: "邮箱"
         user_name: "用户名"

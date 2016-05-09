@@ -5,6 +5,9 @@ ActiveAdmin.register LineItem do
   index do
     selectable_column
     column :id
+    column :sn do |line_item|
+      line_item.order.sn
+    end
     column :product do |line_item|
       "商品ID：#{line_item.product_id}\n商品名称：#{line_item.try(:product).try(:name)}"
     end
