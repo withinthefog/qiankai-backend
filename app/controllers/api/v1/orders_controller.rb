@@ -4,17 +4,30 @@ class Api::V1::OrdersController < ApiController
 
   def index
     if(params[:sn].present?)
-      @order = Order.find_by_sn(params[:sn])
-      raise ActiveRecord::RecordNotFound, "Can not find order with sn #{params[:sn]}" unless @order
-      raise UnauthorizedException unless @order.try(:consumer_id) == current_consumer.id
+      @order = find_order_by_sn(params[:sn])
       return render :show
     end
 
     @orders = Order.includes(:address).includes(:line_items).includes(:products).where(consumer_id: current_consumer.id).order('created_at DESC')
   end
 
+  def update
+    @order = find_order_by_sn(params[:id])
+    @order.update_attributes(order_update_params) if order_update_params[:state] == '支付中' && @order.state == '未支付'
+    render :show
+  end
+
+  def find_order_by_sn(sn)
+    raise ActiveRecord::RecordNotFound, "Can not find order" unless sn
+    @order = Order.find_by_sn(sn)
+    raise ActiveRecord::RecordNotFound, "Can not find order with sn #{params[:sn]}" unless @order
+    raise UnauthorizedException unless @order.try(:consumer_id) == current_consumer.id
+    @order
+  end
+
   def show
     @order = Order.find(params[:id].to_i)
+    raise UnauthorizedException unless @order.try(:consumer_id) == current_consumer.id
   end
 
   def create
@@ -41,6 +54,10 @@ class Api::V1::OrdersController < ApiController
   private
   def order_params
     params.require(:order).permit(:address_id, :ship_fee, products: [:id, :quantity])
+  end
+
+  def order_update_params
+    params.require(:order).permit(:state)
   end
 
 end
