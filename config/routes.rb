@@ -31,6 +31,8 @@ Rails.application.routes.draw do
       resources :virtual_tourisms, only: [:index, :show]
       resources :addresses, only: [:index, :create, :destroy]
       resources :orders
+      resources :provinces, only: [:index]
+      resources :cities, only: [:index]
       resource :consumer, only: [:show, :update]
       resources :transactions
       get  'search/:key_word', to: 'products#search'
