@@ -25,6 +25,8 @@
 #
 
 class Product < ActiveRecord::Base
+  before_save :set_tag_categories
+
   scope :hot, -> () {
     where(hot: true)
   }
@@ -42,4 +44,13 @@ class Product < ActiveRecord::Base
   has_many :line_items
   has_many :orders, through: :line_items
   belongs_to :customer
+
+  def set_tag_categories
+    tag_categories = self.tags.map(&:tag_category).uniq
+    tag_categories.delete(nil)
+    tag_categories.map(&:present_tag).each do |tag|
+      next if self.tags.include?(tag)
+      self.tags << tag
+    end
+  end
 end
