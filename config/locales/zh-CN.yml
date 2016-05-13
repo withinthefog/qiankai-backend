@@ -138,6 +138,7 @@ zh-CN:
       tag:
         display: "显示"
         name: "标题"
+        tag_category: "所属类别"
         created_at: "创建时间"
         updated_at: "更新时间"
       tourism_tag:
