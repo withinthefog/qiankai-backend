@@ -21,15 +21,15 @@ ActiveAdmin.register ShipmentFee do
       f.input :province, as: :select, collection: Province.all.map { |province|
                          [province.name, province.id, {"data-province-id" => province.id}]
                        }, input_html: {
-                           :onchange => "
-    var province = $(this).find('option:selected').attr('data-province-id');
+                           onchange: "
+                                        var province = $(this).find('option:selected').attr('data-province-id');
 
-    $('#shipment_fee_city_id').val(0).find('option').each(function(){
-      var $option = $(this),
-        isCorrectProvince = ($option.attr('data-province-id') === province);
-        $option.prop('hidden',!isCorrectProvince);
-    });
-  "
+                                        $('#shipment_fee_city_id').val(0).find('option').each(function(){
+                                          var $option = $(this),
+                                            isCorrectProvince = ($option.attr('data-province-id') === province);
+                                            $option.prop('hidden',!isCorrectProvince);
+                                        });
+                                      "
                        }
       f.input :city, as: :select, collection: City.all.map { |city|
                      [city.name, city.id, {"data-province-id" => city.province_id}]
