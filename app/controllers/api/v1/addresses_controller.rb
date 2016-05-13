@@ -27,6 +27,6 @@ class Api::V1::AddressesController < ApiController
 
   private
   def address_params
-    params.require(:address).permit(:receiver, :phone, :address, :is_default, :cityName, :provinceName, :city_id, :province_id)
+    params.require(:address).permit(:receiver, :phone, :address, :isDefault, :cityName, :provinceName, :city_id, :province_id)
   end
 end
