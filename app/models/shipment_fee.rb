@@ -14,4 +14,9 @@
 class ShipmentFee < ActiveRecord::Base
   belongs_to :province
   belongs_to :city
+
+  before_save :set_destination_name
+  def set_destination_name
+    self.destination_name = self.province.name + (self.city ? "/#{self.city.name}" : '')
+  end
 end
