@@ -6,19 +6,19 @@ ActiveAdmin.register LineItem do
     selectable_column
     column :id
     column :sn do |line_item|
-      line_item.order.sn
+      line_item.order.try(:sn)
     end
     column :product do |line_item|
       "商品ID：#{line_item.product_id}\n商品名称：#{line_item.try(:product).try(:name)}"
     end
     column :consumer do |line_item|
-      line_item.order.consumer.openid ? "微信用户：#{line_item.order.consumer.nickname}" : line_item.order.consumer.email if line_item.order.consumer.present?
+      (line_item.order.try(:consumer).try(:openid) ? "微信用户：#{line_item.order.try(:consumer).try(:nickname)}" : line_item.order.try(:consumer).try(:email)) if line_item.order.try(:consumer)
     end
     column :address do |line_item|
-      link_to line_item.order.address.city_name, admin_address_path(line_item.order.address) if line_item.order.address.present?
+      (link_to line_item.order.address.city_name, admin_address_path(line_item.order.address)) if line_item.order.try(:address)
     end
     column :state do |line_item|
-      line_item.order.state
+      line_item.order.try(:state)
     end
     column :handle_state
     column :unit_price
