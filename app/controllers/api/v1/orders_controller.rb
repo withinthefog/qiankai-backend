@@ -40,11 +40,13 @@ class Api::V1::OrdersController < ApiController
       LineItem.create(product_id: product.id, quantity: quantity, unit_price: product.price.to_f)
     end
 
+    shipment_fee = ShipmentFeeService.calculate(params[:order][:address_id])
+
     @order = Order.create(consumer_id: current_consumer.id,
                          address_id: params[:order][:address_id],
                          total_price: total_price,
                          state: '未支付',
-                         ship_fee: order_params[:ship_fee],
+                         ship_fee: shipment_fee,
                          sn: "#{DateTime.now.to_i}#{rand(9999)}")
     @order.line_items << line_items
 
@@ -53,7 +55,7 @@ class Api::V1::OrdersController < ApiController
 
   private
   def order_params
-    params.require(:order).permit(:address_id, :ship_fee, products: [:id, :quantity])
+    params.require(:order).permit(:address_id, products: [:id, :quantity])
   end
 
   def order_update_params
