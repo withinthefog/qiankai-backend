@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       resources :cities, only: [:index]
       resource :consumer, only: [:show, :update]
       resources :transactions
+      resources :tag_categories, only: [:index]
       get  'search/:key_word', to: 'products#search'
       post 'oauth_sign_in', to: 'wechats#sign_in'
     end
