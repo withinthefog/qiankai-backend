@@ -40,7 +40,7 @@ class Api::V1::OrdersController < ApiController
       LineItem.create(product_id: product.id, quantity: quantity, unit_price: product.price.to_f)
     end
 
-    shipment_fee = ShipmentFeeService.calculate(params[:order][:address_id])
+    shipment_fee = total_price > FreeShipmentCoupon.last.min_price ? 0 : ShipmentFeeService.calculate(params[:order][:address_id])
 
     @order = Order.create(consumer_id: current_consumer.id,
                          address_id: params[:order][:address_id],
