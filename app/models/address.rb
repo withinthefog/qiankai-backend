@@ -13,6 +13,8 @@
 #  consumer_id   :integer
 #  is_default    :boolean          default(FALSE), not null
 #  deleted       :boolean          default(FALSE), not null
+#  province_id   :integer
+#  city_id       :integer
 #
 
 class Address < ActiveRecord::Base
