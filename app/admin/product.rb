@@ -23,6 +23,7 @@ ActiveAdmin.register Product do
   filter :price
   filter :unit
   filter :hot
+  filter :tags
   filter :stock_number
   filter :created_at
 

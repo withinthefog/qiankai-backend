@@ -7,7 +7,10 @@ ActiveAdmin.register Order do
     column :id
     column :sn
     column :line_items do |order|
-      order.line_items.map{|line_item| "商品ID: #{line_item.try(:product).try(:name)}, 数量: #{line_item.quantity}"}.reduce('+')
+      order.line_items.map{|line_item| "#{line_item.try(:product).try(:name)} X #{line_item.quantity}, "}.reduce('+')
+    end
+    column '商家' do |order|
+      order.line_items.map{|line_item| "#{line_item.try(:product).try(:customer).try(:name)}"}.reduce('+')
     end
     column :consumer do |order|
       order.consumer.openid ? "微信用户：#{order.consumer.nickname}" : order.consumer.email if order.consumer.present?
