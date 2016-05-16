@@ -133,6 +133,7 @@ zh-CN:
       customer_admin_user_name:
       customer:
         name: "名称"
+        phone: "电话"
         description: "描述"
         admin_user:
           name: "姓名"
