@@ -17,8 +17,16 @@ class Api::V1::OrdersController < ApiController
     render :show
   end
 
-  def delete
+  def destroy
     @order = find_order_by_sn(params[:id])
+
+    if(@order.state == '未支付')
+      @order.update_attributes(deleted: true)
+      @message = "成功删除订单#{@order.sn}"
+    else
+      @message = '该订单已支付，无法删除'
+    end
+    render :message
   end
 
   def show
