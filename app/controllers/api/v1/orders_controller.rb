@@ -8,7 +8,7 @@ class Api::V1::OrdersController < ApiController
       return render :show
     end
 
-    @orders = Order.includes(:address).includes(:line_items).includes(:products).where(consumer_id: current_consumer.id).order('created_at DESC')
+    @orders = Order.includes(:address).includes(:line_items).includes(:products).where(consumer_id: current_consumer.id, deleted: false).order('created_at DESC')
   end
 
   def update
@@ -69,7 +69,8 @@ class Api::V1::OrdersController < ApiController
   def find_order_by_sn(sn)
     raise ActiveRecord::RecordNotFound, "Can not find order" unless sn
     @order = Order.find_by_sn(sn)
-    raise ActiveRecord::RecordNotFound, "Can not find order with sn #{params[:sn]}" unless @order
+    raise ActiveRecord::RecordNotFound, "Can not find order with sn #{sn}" unless @order
+    raise ActiveRecord::RecordNotFound, "Order sn #{sn} has been deleted" if @order.deleted
     raise UnauthorizedException unless @order.try(:consumer_id) == current_consumer.id
     @order
   end
