@@ -21,6 +21,7 @@ class Api::V1::AddressesController < ApiController
   def destroy
     @address_id = params[:id]
     address = Address.find(params[:id])
+    raise ActiveRecord::RecordNotFound, 'Address has been deleted' if address.deleted
     raise UnauthorizedException unless address.try(:consumer_id) == current_consumer.id
     address.update(deleted: true)
   end
