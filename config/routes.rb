@@ -36,6 +36,9 @@ Rails.application.routes.draw do
       resource :consumer, only: [:show, :update]
       resources :transactions
       resources :shipment_fees, only: [:index]
+        resource :shipment_fee do
+        get 'pre_calculate', to: 'shipment_fees#pre_calculate'
+      end
       resources :tag_categories, only: [:index]
       get  'search/:key_word', to: 'products#search'
       post 'oauth_sign_in', to: 'wechats#sign_in'
