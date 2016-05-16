@@ -40,5 +40,8 @@ ActiveAdmin.register Order do
 
   filter :created_at
   filter :state
+  filter :sn
   filter :handle_state
+  filter :products
+  filter :customers
 end

@@ -18,4 +18,5 @@
 class LineItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :product
+  has_one :customer, through: :product
 end
