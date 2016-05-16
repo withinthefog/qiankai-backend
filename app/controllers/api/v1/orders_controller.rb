@@ -17,12 +17,8 @@ class Api::V1::OrdersController < ApiController
     render :show
   end
 
-  def find_order_by_sn(sn)
-    raise ActiveRecord::RecordNotFound, "Can not find order" unless sn
-    @order = Order.find_by_sn(sn)
-    raise ActiveRecord::RecordNotFound, "Can not find order with sn #{params[:sn]}" unless @order
-    raise UnauthorizedException unless @order.try(:consumer_id) == current_consumer.id
-    @order
+  def delete
+    @order = find_order_by_sn(params[:id])
   end
 
   def show
@@ -60,6 +56,14 @@ class Api::V1::OrdersController < ApiController
 
   def order_update_params
     params.require(:order).permit(:state)
+  end
+
+  def find_order_by_sn(sn)
+    raise ActiveRecord::RecordNotFound, "Can not find order" unless sn
+    @order = Order.find_by_sn(sn)
+    raise ActiveRecord::RecordNotFound, "Can not find order with sn #{params[:sn]}" unless @order
+    raise UnauthorizedException unless @order.try(:consumer_id) == current_consumer.id
+    @order
   end
 
 end
