@@ -15,10 +15,10 @@ json.order do
   json.line_items @order.line_items do |line_item|
     json.quantity line_item.quantity
     json.product do
-      json.id line_item.product.id
-      json.name line_item.product.name
-      json.image line_item.product.product_images.size > 0 ? line_item.product.product_images[0].url : ''
-      json.price line_item.product.price
+      json.id line_item.try(:product).try(:id)
+      json.name line_item.try(:product).try(:name)
+      json.image line_item.try(:product).try(:product_images).try(:size) && line_item.try(:product).try(:product_images).try(:size) > 0 ? line_item.product.product_images[0].url : ''
+      json.price line_item.try(:product).try(:price)
     end
   end
 end
