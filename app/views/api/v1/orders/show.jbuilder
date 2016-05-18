@@ -13,7 +13,7 @@ json.order do
       json.id line_item.try(:product).try(:id)
       json.name line_item.try(:product).try(:name)
       json.image line_item.try(:product).try(:product_images).try(:size) && line_item.try(:product).try(:product_images).try(:size) > 0 ? line_item.product.product_images[0].url : ''
-      json.price line_item.try(:product).try(:price)
+      json.price line_item.unit_price
     end
   end
 end
