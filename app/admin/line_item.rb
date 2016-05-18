@@ -15,7 +15,7 @@ ActiveAdmin.register LineItem do
       (line_item.order.try(:consumer).try(:openid) ? "微信用户：#{line_item.order.try(:consumer).try(:nickname)}" : line_item.order.try(:consumer).try(:email)) if line_item.order.try(:consumer)
     end
     column :address do |line_item|
-      (link_to line_item.order.address.city_name, admin_address_path(line_item.order.address)) if line_item.order.try(:address)
+      line_item.order.try(:address).try(:human_read_address)
     end
     column :state do |line_item|
       line_item.order.try(:state)
