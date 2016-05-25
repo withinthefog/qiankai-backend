@@ -79,6 +79,7 @@ zh-CN:
         updated_at: "更新时间"
         line_items: "购买详情"
         logistical: "物流公司"
+        comment: "备注"
         logistical_number: "物流编号"
       free_shipment_coupon:
         name: "名称"

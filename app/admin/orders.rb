@@ -22,6 +22,7 @@ ActiveAdmin.register Order do
     column :handle_state
     column :total_price
     column :ship_fee
+    column :comment
     column :created_at
     actions
   end

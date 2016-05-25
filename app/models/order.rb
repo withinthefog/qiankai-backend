@@ -15,6 +15,7 @@
 #  logistical_number :string(255)
 #  handle_state      :string(255)      default("未处理"), not null
 #  deleted           :boolean          default(FALSE), not null
+#  comment           :text(65535)
 #
 
 class Order < ActiveRecord::Base

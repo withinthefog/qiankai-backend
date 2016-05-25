@@ -1,6 +1,8 @@
 class Api::V1::OrdersController < ApiController
   before_action :authenticate_consumer_from_token!
   before_action :authenticate_consumer!
+  before_action :validate_address, only: [:create]
+  before_action :validate_products, only: [:create]
 
   def index
     if(params[:sn].present?)
@@ -41,13 +43,15 @@ class Api::V1::OrdersController < ApiController
       quantity = item[:quantity]
       product = Product.find(item[:id].to_i)
       total_price += product.price.to_f * quantity
+      product.update_attributes(stock_number: product.stock_number - quantity) if product.stock_number
       LineItem.create(product_id: product.id, quantity: quantity, unit_price: product.price.to_f)
     end
 
     shipment_fee = total_price > FreeShipmentCoupon.last.try(:min_price) ? 0 : ShipmentFeeService.calculate(params[:order][:address_id])
 
     @order = Order.create(consumer_id: current_consumer.id,
-                         address_id: params[:order][:address_id],
+                         address_id: order_params[:address_id],
+                         comment: order_params[:comment],
                          total_price: total_price,
                          state: '未支付',
                          ship_fee: shipment_fee,
@@ -59,7 +63,7 @@ class Api::V1::OrdersController < ApiController
 
   private
   def order_params
-    params.require(:order).permit(:address_id, products: [:id, :quantity])
+    params.require(:order).permit(:address_id, :comment, products: [:id, :quantity])
   end
 
   def order_update_params
@@ -73,6 +77,19 @@ class Api::V1::OrdersController < ApiController
     raise ActiveRecord::RecordNotFound, "Order sn #{sn} has been deleted" if @order.deleted
     raise UnauthorizedException unless @order.try(:consumer_id) == current_consumer.id
     @order
+  end
+
+  def validate_address
+    address = Address.find(order_params[:address_id])
+    raise ActiveRecord::RecordNotFound, 'Address has been deleted' if address.deleted
+    raise UnauthorizedException unless address.try(:consumer_id) == current_consumer.id
+  end
+
+  def validate_products
+    order_params[:products].each do |item|
+      product = Product.find(item[:id])
+      raise UnprocessableEntityException, '库存不足' if product.stock_number && product.stock_number < item[:quantity]
+    end
   end
 
 end

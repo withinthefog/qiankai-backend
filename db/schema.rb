@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516145020) do
+ActiveRecord::Schema.define(version: 20160525130411) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -121,9 +121,7 @@ ActiveRecord::Schema.define(version: 20160516145020) do
     t.string   "refresh_token",          limit: 255
   end
 
-  add_index "consumers", ["authentication_token"], name: "index_consumers_on_authentication_token", using: :btree
-  add_index "consumers", ["email"], name: "index_consumers_on_email", unique: true, using: :btree
-  add_index "consumers", ["reset_password_token"], name: "index_consumers_on_reset_password_token", unique: true, using: :btree
+  add_index "consumers", ["authentication_token"], name: "index_consumers_on_authentication_token", length: {"authentication_token"=>191}, using: :btree
 
   create_table "create_spaces", force: :cascade do |t|
     t.text     "introduction", limit: 65535
@@ -186,14 +184,15 @@ ActiveRecord::Schema.define(version: 20160516145020) do
     t.integer  "address_id",        limit: 4
     t.string   "state",             limit: 255
     t.float    "total_price",       limit: 24
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.float    "ship_fee",          limit: 24
     t.string   "sn",                limit: 255
     t.string   "logistical",        limit: 255
     t.string   "logistical_number", limit: 255
-    t.string   "handle_state",      limit: 255, default: "未处理", null: false
-    t.boolean  "deleted",           limit: 1,   default: false, null: false
+    t.string   "handle_state",      limit: 255,   default: "未处理", null: false
+    t.boolean  "deleted",           limit: 1,     default: false, null: false
+    t.text     "comment",           limit: 65535
   end
 
   create_table "products", force: :cascade do |t|
@@ -324,7 +323,7 @@ ActiveRecord::Schema.define(version: 20160516145020) do
     t.string   "role",                   limit: 255
   end
 
-  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", length: {"authentication_token"=>191}, using: :btree
 
   create_table "virtual_tourisms", force: :cascade do |t|
     t.string   "title",                   limit: 255
