@@ -43,11 +43,12 @@ class Api::V1::OrdersController < ApiController
       quantity = item[:quantity]
       product = Product.find(item[:id].to_i)
       total_price += product.price.to_f * quantity
-      product.update_attributes(stock_number: product.stock_number - quantity) if product.stock_number
       LineItem.create(product_id: product.id, quantity: quantity, unit_price: product.price.to_f)
     end
 
     shipment_fee = total_price > FreeShipmentCoupon.last.try(:min_price) ? 0 : ShipmentFeeService.calculate(params[:order][:address_id])
+
+    payment_method = PaymentMethod.find(order_params[:payment_method_id]) if order_params[:payment_method_id]
 
     @order = Order.create(consumer_id: current_consumer.id,
                          address_id: order_params[:address_id],
@@ -55,6 +56,8 @@ class Api::V1::OrdersController < ApiController
                          invoice_title: order_params[:invoice_title],
                          total_price: total_price,
                          state: '未支付',
+                         payment_method_id: payment_method.try(:id),
+                         payment_method_name: payment_method.try(:name),
                          ship_fee: shipment_fee,
                          sn: "#{DateTime.now.to_i}#{rand(9999)}")
     @order.line_items << line_items
@@ -64,7 +67,7 @@ class Api::V1::OrdersController < ApiController
 
   private
   def order_params
-    params.require(:order).permit(:address_id, :comment, :invoice_title, products: [:id, :quantity])
+    params.require(:order).permit(:address_id, :comment, :invoice_title, :payment_method_id, products: [:id, :quantity])
   end
 
   def order_update_params

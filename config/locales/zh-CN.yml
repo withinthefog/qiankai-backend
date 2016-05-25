@@ -90,6 +90,8 @@ zh-CN:
         comment: "备注"
         invoice_title: "发票抬头"
         logistical_number: "物流编号"
+        payment_method_id: "支付方式ID"
+        payment_method_name: "支付方式"
       free_shipment_coupon:
         name: "名称"
         min_price: "免邮费价格"

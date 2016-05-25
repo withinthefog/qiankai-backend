@@ -7,6 +7,8 @@ json.order do
   json.address @order.address
   json.comment @order.comment
   json.invoice_title @order.invoice_title
+  json.payment_method_id @order.payment_method_id
+  json.payment_method_name @order.payment_method_name
   json.created_at @order.created_at.strftime('%Y-%m-%d')
 
   json.line_items @order.line_items do |line_item|
