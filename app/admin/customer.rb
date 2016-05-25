@@ -1,4 +1,5 @@
 ActiveAdmin.register Customer do
+  menu parent:'开街商城'
   permit_params :name, :description, :phone, admin_user_attributes: [:name, :email, :password, :password_confirmation], attachments_attributes: [:id, :image, :_destroy]
 
   index do

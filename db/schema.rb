@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525134150) do
+ActiveRecord::Schema.define(version: 20160525135141) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -194,6 +194,11 @@ ActiveRecord::Schema.define(version: 20160525134150) do
     t.boolean  "deleted",           limit: 1,     default: false, null: false
     t.text     "comment",           limit: 65535
     t.string   "invoice_title",     limit: 255
+  end
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|

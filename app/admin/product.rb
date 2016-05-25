@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-  menu parent:'商品'
+  menu parent:'开街商城'
 
   permit_params :stock_number, :name, :image_url, :description, :price, :unit, :link, :hot, :product_detail, :customer_id, :service, tag_ids: [],
                 product_images_attributes: [:id, :image, :_destroy], product_details_attributes: [:id, :image, :_destroy],
@@ -12,7 +12,7 @@ ActiveAdmin.register Product do
     column :description
     column :price
     column :unit
-    column :hot
+    # column :hot
     column :stock_number
     column :created_at
     actions
@@ -22,7 +22,7 @@ ActiveAdmin.register Product do
   filter :name
   filter :price
   filter :unit
-  filter :hot
+  # filter :hot
   filter :tags
   filter :stock_number
   filter :created_at
@@ -33,7 +33,7 @@ ActiveAdmin.register Product do
       f.input :description
       f.input :price
       f.input :unit
-      f.input :hot
+      # f.input :hot
       f.input :stock_number
       f.input :tags, as: :check_boxes, collection: Tag.all
       if current_admin_user.admin?
@@ -46,7 +46,7 @@ ActiveAdmin.register Product do
           a.input :image, as: :file, hint: (a.template.image_tag(a.object.image.url(:small)) if a.object.image.exists? unless a.object.new_record?)
         end
       end
-      f.inputs '产品详情' do
+      f.inputs '商品详情' do
         f.has_many :product_details, heading: false, allow_destroy: true do |a|
           a.input :image, as: :file, hint: (a.template.image_tag(a.object.image.url(:small)) if a.object.image.exists? unless a.object.new_record?)
         end

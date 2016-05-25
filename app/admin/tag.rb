@@ -1,5 +1,5 @@
 ActiveAdmin.register Tag do
-  menu parent:'商品'
+  menu parent:'开街商城'
 
   permit_params :name, :display, :tag_category_id
 
