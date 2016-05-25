@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525142056) do
+ActiveRecord::Schema.define(version: 20160525143623) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -224,6 +224,7 @@ ActiveRecord::Schema.define(version: 20160525142056) do
     t.integer  "customer_id",                 limit: 4
     t.string   "unit",                        limit: 255
     t.integer  "stock_number",                limit: 4
+    t.boolean  "free_ship",                   limit: 1,   default: false, null: false
   end
 
   create_table "products_tags", id: false, force: :cascade do |t|
