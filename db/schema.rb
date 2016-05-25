@@ -197,8 +197,9 @@ ActiveRecord::Schema.define(version: 20160525135141) do
   end
 
   create_table "payment_methods", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "products", force: :cascade do |t|

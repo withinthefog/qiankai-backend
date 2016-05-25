@@ -51,7 +51,12 @@ zh-CN:
       address: "配送地址"
       shipment_fee: "运费管理"
       free_shipment_coupon: "免邮费优惠"
+      payment_method: "支付方式"
     attributes:
+      payment_method:
+        name: "支付方式名称"
+        created_at: "创建时间"
+        updated_at: "更新时间"
       virtual_tourism:
         title: "标题"
         description: "描述"
