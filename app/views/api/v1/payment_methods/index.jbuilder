@@ -1,0 +1,1 @@
+json.payment_methods @payment_methods

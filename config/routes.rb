@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       resources :cities, only: [:index]
       resource :consumer, only: [:show, :update]
       resources :transactions
+      resources :payment_methods, only: [:index]
       resources :shipment_fees, only: [:index]
         resource :shipment_fee do
         get 'pre_calculate', to: 'shipment_fees#pre_calculate'
