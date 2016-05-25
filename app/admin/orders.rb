@@ -29,8 +29,8 @@ ActiveAdmin.register Order do
 
   form do |f|
     f.inputs "订单详情" do
-      f.input :state
-      f.input :handle_state, as: :select, collection: ['未处理', '正在处理', '已发货', '已完成']
+      f.input :state, as: :select, collection: ['未支付', '支付中', '已支付']
+      f.input :handle_state, as: :select, collection: ['未处理', '正在处理', '已发货', '已完成', '已收货']
       f.input :logistical
       f.input :logistical_number
       f.input :total_price

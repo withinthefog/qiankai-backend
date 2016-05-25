@@ -3,6 +3,7 @@ class Api::V1::OrdersController < ApiController
   before_action :authenticate_consumer!
   before_action :validate_address, only: [:create]
   before_action :validate_products, only: [:create]
+  before_action :validate_handle_state, only: [:update]
 
   def index
     if(params[:sn].present?)
@@ -15,8 +16,17 @@ class Api::V1::OrdersController < ApiController
 
   def update
     @order = find_order_by_sn(params[:id])
-    @order.update_attributes(order_update_params) if order_update_params[:state] == '支付中' && @order.state == '未支付'
+    update_order_state(@order)
+    update_order_handle_state(@order)
     render :show
+  end
+
+  def update_order_handle_state(order)
+    order.update_attributes(handle_state: order_update_params[:handle_state]) if order_update_params[:handle_state] == '已收货' && @order.state == '已支付'
+  end
+
+  def update_order_state(order)
+    order.update_attributes(state: order_update_params[:state]) if order_update_params[:state] == '支付中' && @order.state == '未支付'
   end
 
   def destroy
@@ -60,7 +70,7 @@ class Api::V1::OrdersController < ApiController
   end
 
   def order_update_params
-    params.require(:order).permit(:state)
+    params.require(:order).permit(:state, :handle_state)
   end
 
   def find_order_by_sn(sn)
