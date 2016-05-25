@@ -7,6 +7,7 @@ json.product do
   json.price @product.price
   json.unit @product.unit
   json.stock_number @product.stock_number
+  json.free_ship @product.free_ship
   json.sold_amount 121
   json.comments ["好产品", "经久耐用"]
   json.service_description "由\"#{@product.customer ? @product.customer.name : '开县春秋农业开发有限公司'}\"直接销售和发货，并提供售后服务"
