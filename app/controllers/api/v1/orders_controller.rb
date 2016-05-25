@@ -52,6 +52,7 @@ class Api::V1::OrdersController < ApiController
     @order = Order.create(consumer_id: current_consumer.id,
                          address_id: order_params[:address_id],
                          comment: order_params[:comment],
+                         invoice_title: order_params[:invoice_title],
                          total_price: total_price,
                          state: '未支付',
                          ship_fee: shipment_fee,
@@ -63,7 +64,7 @@ class Api::V1::OrdersController < ApiController
 
   private
   def order_params
-    params.require(:order).permit(:address_id, :comment, products: [:id, :quantity])
+    params.require(:order).permit(:address_id, :comment, :invoice_title, products: [:id, :quantity])
   end
 
   def order_update_params

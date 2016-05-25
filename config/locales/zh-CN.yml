@@ -79,7 +79,11 @@ zh-CN:
         updated_at: "更新时间"
         line_items: "购买详情"
         logistical: "物流公司"
+        deleted: "是否已删除"
+        consumer: "消费者"
+        address: "配送地址"
         comment: "备注"
+        invoice_title: "发票抬头"
         logistical_number: "物流编号"
       free_shipment_coupon:
         name: "名称"
