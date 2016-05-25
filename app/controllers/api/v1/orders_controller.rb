@@ -46,21 +46,10 @@ class Api::V1::OrdersController < ApiController
       LineItem.create(product_id: product.id, quantity: quantity, unit_price: product.price.to_f)
     end
 
-    shipment_fee = total_price > FreeShipmentCoupon.last.try(:min_price) ? 0 : ShipmentFeeService.calculate(params[:order][:address_id])
-
     payment_method = PaymentMethod.find(order_params[:payment_method_id]) if order_params[:payment_method_id]
 
-    @order = Order.create(consumer_id: current_consumer.id,
-                         address_id: order_params[:address_id],
-                         comment: order_params[:comment],
-                         invoice_title: order_params[:invoice_title],
-                         total_price: total_price,
-                         state: '未支付',
-                         payment_method_id: payment_method.try(:id),
-                         payment_method_name: payment_method.try(:name),
-                         ship_fee: shipment_fee,
-                         sn: "#{DateTime.now.to_i}#{rand(9999)}")
-    @order.line_items << line_items
+    @order = create_order(total_price, payment_method, line_items)
+    calculate_shipment_fee(@order)
 
     render :show
   end
@@ -94,6 +83,25 @@ class Api::V1::OrdersController < ApiController
       product = Product.find(item[:id])
       raise UnprocessableEntityException, '库存不足' if product.stock_number && product.stock_number < item[:quantity]
     end
+  end
+
+  def create_order(total_price, payment_method, line_items)
+    order = Order.create(consumer_id: current_consumer.id,
+                 address_id: order_params[:address_id],
+                 comment: order_params[:comment],
+                 invoice_title: order_params[:invoice_title],
+                 total_price: total_price,
+                 state: '未支付',
+                 payment_method_id: payment_method.try(:id),
+                 payment_method_name: payment_method.try(:name),
+                 sn: "#{DateTime.now.to_i}#{rand(9999)}")
+    order.line_items << line_items
+    order
+  end
+
+  def calculate_shipment_fee(order)
+    shipment_fee = order.total_price > FreeShipmentCoupon.last.try(:min_price) ? 0 : ShipmentFeeService.calculate(order)
+    order.update_attributes(ship_fee: shipment_fee)
   end
 
 end
