@@ -23,7 +23,7 @@ ActiveAdmin.register Order do
     column :total_price
     column :ship_fee
     column :comment
-    column :created_at
+    column :deleted
     actions
   end
 
@@ -45,4 +45,5 @@ ActiveAdmin.register Order do
   filter :handle_state
   filter :products
   filter :customers
+  filter :deleted
 end

@@ -86,7 +86,7 @@ zh-CN:
         updated_at: "更新时间"
         line_items: "购买详情"
         logistical: "物流公司"
-        deleted: "是否已删除"
+        deleted: "已取消"
         consumer: "消费者"
         address: "配送地址"
         comment: "备注"
