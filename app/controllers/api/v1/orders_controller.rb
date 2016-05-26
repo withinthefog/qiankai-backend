@@ -3,7 +3,6 @@ class Api::V1::OrdersController < ApiController
   before_action :authenticate_consumer!
   before_action :validate_address, only: [:create]
   before_action :validate_products, only: [:create]
-  before_action :validate_handle_state, only: [:update]
 
   def index
     if(params[:sn].present?)

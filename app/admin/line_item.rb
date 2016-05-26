@@ -23,7 +23,12 @@ ActiveAdmin.register LineItem do
     column :handle_state
     column :unit_price
     column :quantity
-    column :created_at
+    column '已删除' do |line_item|
+      (line_item.order.try(:deleted) || !line_item.order.present?) ? '是' : '否'
+    end
+    column '备注' do |line_item|
+      line_item.order.try(:comment)
+    end
     actions
   end
 
