@@ -1,6 +1,6 @@
 ActiveAdmin.register Customer do
   menu parent:'开街商城'
-  permit_params :name, :description, :phone, admin_user_attributes: [:name, :email, :password, :password_confirmation], attachments_attributes: [:id, :image, :_destroy]
+  permit_params :name, :description, :phone, admin_users_attributes: [:id, :name, :email, :password, :password_confirmation, :_destroy], attachments_attributes: [:id, :image, :_destroy]
 
   index do
     selectable_column
@@ -8,7 +8,9 @@ ActiveAdmin.register Customer do
     column :name
     column :description
     column :phone
-    column :admin_user
+    column :admin_users do |customer|
+      customer.admin_users.map(&:name).join(', ')
+    end
     column :created_at
     actions
   end
@@ -16,17 +18,40 @@ ActiveAdmin.register Customer do
   filter :description
   filter :name
   filter :phone
-  filter :admin_user
   filter :created_at
 
+  show do
+    attributes_table do
+      row :nme
+      row :description
+      row :phone
+    end
+
+    panel('商户管理员') do
+      table_for(customer.admin_users) do
+        column :id
+        column :name
+        column :email
+      end
+    end
+
+    panel('图片') do
+      table_for(customer.attachments) do
+        column :image do |attachment|
+          image_tag attachment.image.url(:small)
+        end
+      end
+    end
+  end
+
   form do |f|
-    f.inputs "商户详情" do
+    f.inputs '商户详情' do
       f.input :name
       f.input :phone
       f.input :description
 
-      if current_admin_user.admin? && f.object.new_record?
-        f.inputs "商户管理员", for: [:admin_user, f.object.admin_user || AdminUser.new] do |a|
+      f.inputs '商户管理员' do
+        f.has_many :admin_users, heading: false, allow_destroy: true do |a|
           a.input :name
           a.input :email
           a.input :password

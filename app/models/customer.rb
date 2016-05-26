@@ -16,8 +16,8 @@ class Customer < ActiveRecord::Base
   has_many :attachments, as: :attachable
   accepts_nested_attributes_for :attachments, allow_destroy: true
 
-  has_one :admin_user
-  accepts_nested_attributes_for :admin_user
+  has_many :admin_users
+  accepts_nested_attributes_for :admin_users, allow_destroy: true
 
   has_many :products
 end
