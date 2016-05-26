@@ -13,7 +13,7 @@ class Api::V1::ShipmentFeesController < ApiController
     raise ActiveRecord::RecordNotFound, 'Address has been deleted' if address.deleted
     raise UnauthorizedException unless address.try(:consumer_id) == current_consumer.id
 
-    @shipment_fee = ShipmentFeeService.calculate(params[:address_id])
+    @shipment_fee = ShipmentFeeService.calculate_by_address(params[:address_id])
     render :show
   end
 
