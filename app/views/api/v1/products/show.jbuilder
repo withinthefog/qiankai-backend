@@ -16,6 +16,7 @@ json.product do
   json.logistics 4.75
   json.customer do
     if @product.customer
+      json.id @product.customer.id
       json.name @product.customer.name
     else
       json.name "开县春秋农业开发有限公司"
