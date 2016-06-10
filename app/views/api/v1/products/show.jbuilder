@@ -25,4 +25,5 @@ json.product do
   end
   json.product_details @product.product_details.map(&:url)
   json.services @product.services.map(&:url)
+  json.skus @product.skus
 end
