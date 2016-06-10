@@ -52,10 +52,10 @@ class Api::V1::OrdersController < ApiController
       quantity = item[:quantity]
       product = Product.find(item[:id].to_i)
 
-      unit_price = item[:sku_id] ? Sku.find(item[:sku_id].to_i).price : product.price
+      unit_price = item[:sku_id] ? (sku = Sku.find(item[:sku_id].to_i)).price : product.price
 
       total_price += unit_price.to_f * quantity
-      LineItem.create(product_id: product.id, quantity: quantity, unit_price: unit_price.to_f)
+      LineItem.create(product_id: product.id, quantity: quantity, unit_price: unit_price.to_f, sku_id: sku.try(:id))
     end
 
     payment_method = PaymentMethod.find(order_params[:payment_method_id]) if order_params[:payment_method_id]
