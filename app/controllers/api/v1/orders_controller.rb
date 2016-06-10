@@ -65,7 +65,7 @@ class Api::V1::OrdersController < ApiController
 
   private
   def order_params
-    params.require(:order).permit(:address_id, :comment, :invoice_title, :payment_method_id, products: [:id, :quantity])
+    params.require(:order).permit(:address_id, :comment, :invoice_title, :payment_method_id, products: [:id, :quantity, :sku_id])
   end
 
   def order_update_params
@@ -90,6 +90,10 @@ class Api::V1::OrdersController < ApiController
   def validate_products
     order_params[:products].each do |item|
       product = Product.find(item[:id])
+      if item[:sku_id]
+        sku = Sku.find(item[:sku_id])
+        raise UnprocessableEntityException, 'Sku不存在' unless sku.product_id == product.id
+      end
       raise UnprocessableEntityException, '库存不足' if product.stock_number && product.stock_number < item[:quantity]
     end
   end
