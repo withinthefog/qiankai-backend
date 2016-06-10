@@ -52,7 +52,13 @@ zh-CN:
       shipment_fee: "运费管理"
       free_shipment_coupon: "免邮费优惠"
       payment_method: "支付方式"
+      sku: "品项"
     attributes:
+      sku:
+        name: "名称"
+        price: "价格"
+        created_at: "创建时间"
+        updated_at: "更新时间"
       attachment:
         image: "图片"
       payment_method:

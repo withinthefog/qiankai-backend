@@ -3,7 +3,7 @@ ActiveAdmin.register Product do
 
   permit_params :stock_number, :name, :image_url, :description, :free_ship, :price, :unit, :link, :hot, :product_detail, :customer_id, :service, tag_ids: [],
                 product_images_attributes: [:id, :image, :_destroy], product_details_attributes: [:id, :image, :_destroy],
-                services_attributes: [:id, :image, :_destroy]
+                services_attributes: [:id, :image, :_destroy], skus_attributes: [:id, :name, :price]
 
   index do
     selectable_column
@@ -59,6 +59,14 @@ ActiveAdmin.register Product do
           a.input :image, as: :file, hint: (a.template.image_tag(a.object.image.url(:small)) if a.object.image.exists? unless a.object.new_record?)
         end
       end
+
+      f.inputs '品项' do
+        f.has_many :skus, heading: false, allow_destroy: true do |a|
+          a.input :name
+          a.input :price
+        end
+      end
+
     end
     f.actions
   end
