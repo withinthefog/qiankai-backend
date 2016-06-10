@@ -4,7 +4,7 @@ class CreateSku < ActiveRecord::Migration
       t.string :name
       t.float :price
       t.integer :product_id
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

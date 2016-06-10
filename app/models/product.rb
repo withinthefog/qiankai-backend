@@ -46,6 +46,9 @@ class Product < ActiveRecord::Base
   has_many :orders, through: :line_items
   belongs_to :customer
 
+  has_many :skus
+  accepts_nested_attributes_for :skus, allow_destroy: true
+
   def set_tag_categories
     tag_categories = self.tags.map(&:tag_category).uniq
     tag_categories.delete(nil)
