@@ -13,6 +13,7 @@
 #  handle_state      :string(255)      default("未处理"), not null
 #  logistical        :string(255)
 #  logistical_number :string(255)
+#  sku_id            :integer
 #
 
 class LineItem < ActiveRecord::Base
