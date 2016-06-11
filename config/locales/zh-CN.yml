@@ -53,6 +53,7 @@ zh-CN:
       free_shipment_coupon: "免邮费优惠"
       payment_method: "支付方式"
       sku: "品项"
+      tag_category: "标签类别"
     attributes:
       sku:
         name: "名称"
@@ -161,6 +162,12 @@ zh-CN:
           name: "姓名"
           email: "姓名"
         admin_users: "商户管理员"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+      tag_category:
+        display: "显示"
+        name: "标题"
+        present_tag: "代表标签"
         created_at: "创建时间"
         updated_at: "更新时间"
       tag:
