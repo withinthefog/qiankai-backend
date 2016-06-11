@@ -19,6 +19,7 @@ ActiveAdmin.register Product do
     actions
   end
 
+  filter :customer
   filter :description
   filter :name
   filter :price
