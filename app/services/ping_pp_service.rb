@@ -17,7 +17,8 @@ class PingPPService
     {
         wx_pub: {open_id: order.consumer.openid},
         wx_pub_qr: {product_id: order.sn},
-        alipay_pc_direct: {success_url: success_url}
+        alipay_pc_direct: {success_url: success_url},
+        wx: {success_url: success_url}
     }
   end
 end
