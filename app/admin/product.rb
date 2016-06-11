@@ -1,7 +1,7 @@
 ActiveAdmin.register Product do
   menu parent:'开街商城'
 
-  permit_params :stock_number, :name, :image_url, :description, :free_ship, :price, :unit, :link, :on_sale, :product_detail, :customer_id, :service, tag_ids: [],
+  permit_params :display_order, :stock_number, :name, :image_url, :description, :free_ship, :price, :unit, :link, :on_sale, :product_detail, :customer_id, :service, tag_ids: [],
                 product_images_attributes: [:id, :image, :_destroy], product_details_attributes: [:id, :image, :_destroy],
                 services_attributes: [:id, :image, :_destroy], skus_attributes: [:id, :name, :price]
 
@@ -15,6 +15,7 @@ ActiveAdmin.register Product do
     column :free_ship
     column :on_sale
     column :stock_number
+    column :display_order
     column :created_at
     actions
   end
@@ -28,6 +29,7 @@ ActiveAdmin.register Product do
   filter :on_sale
   filter :tags
   filter :stock_number
+  filter :display_order
   filter :created_at
 
   form do |f|
@@ -40,6 +42,7 @@ ActiveAdmin.register Product do
       f.input :on_sale
       f.input :stock_number
       f.input :tags, as: :check_boxes, collection: Tag.all
+      f.input :display_order
       if current_admin_user.admin?
         f.input :customer, as: :select, collection: Customer.all
       else

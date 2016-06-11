@@ -24,10 +24,12 @@
 #  stock_number                :integer
 #  free_ship                   :boolean          default(FALSE), not null
 #  on_sale                     :boolean          default(TRUE), not null
+#  display_order               :integer          default(0), not null
 #
 
 class Product < ActiveRecord::Base
   before_save :set_tag_categories
+  after_save :set_display_order
 
   scope :hot, -> () {
     where(hot: true)
@@ -57,5 +59,9 @@ class Product < ActiveRecord::Base
       next if self.tags.include?(tag)
       self.tags << tag
     end
+  end
+
+  def set_display_order
+    self.update_attributes!(display_order: self.id) if self.display_order == nil || self.display_order == 0
   end
 end
