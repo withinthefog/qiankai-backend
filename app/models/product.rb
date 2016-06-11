@@ -23,6 +23,7 @@
 #  unit                        :string(255)
 #  stock_number                :integer
 #  free_ship                   :boolean          default(FALSE), not null
+#  on_sale                     :boolean          default(TRUE), not null
 #
 
 class Product < ActiveRecord::Base
