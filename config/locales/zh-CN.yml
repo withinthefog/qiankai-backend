@@ -197,6 +197,7 @@ zh-CN:
         price: "价格"
         unit: "单位"
         hot: "热门商品"
+        on_sale: "是否上架"
         stock_number: "库存"
         tags: "标签"
         customer: "商家"

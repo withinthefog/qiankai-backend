@@ -1,11 +1,12 @@
 class Api::V1::ProductsController < ApiController
 
   def index
-    @products = Tag.find_by_display(params['tag']) ? Tag.find_by_display(params['tag']).products : []
+    @products = Tag.find_by_display(params['tag']) ? Tag.find_by_display(params['tag']).products.where(on_sale: true) : []
   end
 
   def show
     @product = Product.find(params['id'].to_i)
+    raise ActiveRecord::RecordNotFound, '此商品已下架' unless @product.on_sale
   end
 
   def search

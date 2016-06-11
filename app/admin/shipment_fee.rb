@@ -17,7 +17,7 @@ ActiveAdmin.register ShipmentFee do
   filter :created_at
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs "详情" do
       f.input :province, as: :select, collection: Province.all.map { |province|
                          [province.name, province.id, {"data-province-id" => province.id}]
                        }, input_html: {

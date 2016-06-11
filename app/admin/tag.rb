@@ -19,7 +19,7 @@ ActiveAdmin.register Tag do
   filter :created_at
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs "详情" do
       f.input :display
       f.input :name
       f.input :tag_category, as: :select, collection: TagCategory.all
