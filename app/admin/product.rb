@@ -41,7 +41,13 @@ ActiveAdmin.register Product do
       f.input :free_ship
       f.input :on_sale
       f.input :stock_number
-      f.input :tags, as: :check_boxes, collection: Tag.all
+
+      f.inputs '标签' do
+        TagCategory.all.each do |tag_category|
+          f.input :tags, as: :check_boxes, collection: tag_category.tags, label: "-- #{tag_category.name}"
+        end
+      end
+
       f.input :display_order
       if current_admin_user.admin?
         f.input :customer, as: :select, collection: Customer.all
